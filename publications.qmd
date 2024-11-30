@@ -1,0 +1,61 @@
+---
+title: "Publications"
+---
+
+## Journal Publications
+
+### Dense 4D nanoscale reconstruction of living brain tissue
+<img src="images/lioness.png" alt="Thumbnail for Dense 4D nanoscale reconstruction of living brain tissue" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Velicky, P., Miguel, E., Michalska, J.M. et al.<br/>
+*Published in:* Nat. Methods 20, 1256–1265 (2023).<br/>
+[Link to publication](https://doi.org/10.1038/s41592-023-01936-6)
+<div style="clear: both;"></div>
+
+### Mixing Yarns and Triangles in Cloth Simulation
+<img src="images/mixing_yarns_triangles.png" alt="Thumbnail for Mixing Yarns and Triangles in Cloth Simulation" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Casafranca, J. J., Cirio, G., Rodriguez, A., Miguel, E., Otaduy, M. A.<br/>
+*Published in:* Computer Graphics Forum Vol. 39(2).<br/>
+[Link to publication](https://doi.org/10.1111/cgf.13915)
+<div style="clear: both;"></div>
+
+### FlexMaps: Computational Design of Flat Flexible Shells for Shaping 3D Objects
+<img src="images/flexmaps.jpg" alt="Thumbnail for FlexMaps: Computational Design of Flat Flexible Shells for Shaping 3D Objects" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Malomo, L., Perez, J., Iarussi, E., Pietroni, N., Miguel, E., Cignoni, P., Bickel, B.<br/>
+*Published in:* ACM Transactions on Graphics, Vol. 37(6) (SIGGRAPH Asia 2018).<br/>
+[Link to publication](https://doi.org/10.1145/3272127.327507)
+<div style="clear: both;"></div>
+
+### CurveUps: Shaping Objects from Flat Plates with Tension-Actuated Curvature
+<img src="images/curveups.png" alt="Thumbnail for CurveUps: Shaping Objects from Flat Plates with Tension-Actuated Curvature" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Guseinov R., Miguel E., Bickel, B.<br/>
+*Published in:* ACM Transactions on Graphics, Vol. 36(4) (SIGGRAPH 2017).<br/>
+[Link to publication](https://doi.org/10.1145/3072959.307370)
+<div style="clear: both;"></div>
+
+### Computational Design of Stable Planar-Rod Structures
+<img src="images/cdosprs.png" alt="Thumbnail for Computational Design of Stable Planar-Rod Structures" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., Lepoutre, M., Bickel, B.<br/>
+*Published in:* ACM Transactions on Graphics, Vol. 35(4) (SIGGRAPH 2016).<br/>
+[Link to publication](https://doi.org/10.1145/2897824.292597)
+<div style="clear: both;"></div>
+
+### Modeling and Estimation of Energy-Based Hyperelastic Objects
+<img src="images/additive_energy.png" alt="Thumbnail for Modeling and Estimation of Energy-Based Hyperelastic Objects" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., Miraut, D., Otaduy, M.A.<br/>
+*Published in:* Computer Graphics Forum (Proc. of Eurographics), Volume 35, Number 2, 2016.<br/>
+[Link to publication](https://doi.org/10.1111/cgf.12840)
+<div style="clear: both;"></div>
+
+### Modeling and Estimation of Intenal Friction in Cloth
+<img src="images/friction_sample.png" alt="Thumbnail for Modeling and Estimation of Intenal Friction in Cloth" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., Tamstorf, R., Bradley, D., Schvartzman, S.C., Thomaszewsky, B., Bickel, B., Matusik, W., Marschner, S., Otaduy, M.A.<br/>
+*Published in:* ACM Transactions on Graphics, Vol. 32 (SIGGRAPH Asia 2013).<br/>
+[Link to publication](https://doi.org/10.1145/2508363.250838)
+<div style="clear: both;"></div>
+
+### Data-Driven Estimation of Cloth Simulation Models
+<img src="images/DDCsample.png" alt="Thumbnail for Data-Driven Estimation of Cloth Simulation Models" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., Bradley, D.,Thomaszewsky, B., Bickel, B., Matusik, W., Otaduy, M.A., Marschner, S.<br/>
+*Published in:* Computer Graphics Forum, Vol. 31 (2) (Proc. of Eurographics 2012).<br/>
+[Link to publication](https://doi.org/10.1111/j.1467-8659.2012.03031.x)
+<div style="clear: both;"></div>

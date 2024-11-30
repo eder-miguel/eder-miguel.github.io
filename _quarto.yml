@@ -9,8 +9,10 @@ website:
     right:
       - href: about.qmd
         text: About
-      - icon: github
-        href: https://github.com//<your-repo-name> # Replace with your GitHub URL
+      - href: publications.qmd
+        text: Publications
+      #- icon: github
+      #  href: https://github.com//<your-repo-name> # Replace with your GitHub URL
     search: true # Enables a search bar in the navbar
 
 format:
