@@ -1,0 +1,44 @@
+---
+title: "About"
+---
+
+# About Me
+
+Hi, I’m Eder Miguel.
+
+I enjoy exploring computational solutions to practical problems and am always looking for opportunities to learn something new.
+I currently work as a Research Software Engineer at IST Austria, where I focus on developing tools for super-resolution light microscopy.
+This includes tasks like image and volume segmentation, stitching large microscopy datasets, and analyzing data to help biologists and neuroscientists make sense of their results.
+
+Before this, I worked on physics-based simulations, particularly data-driven methods for fabric mechanics and computational design tools.
+Along the way, I’ve also explored topics like soft robotics, neural rendering, contact simulation, and real-time hand interaction simulations.
+
+I obtained my PhD in Computer Graphics in 2014.
+Afterward, I was a postdoctoral researcher at IST Austria and in 2017, I co-founded Desilico Labs (now Seddi), a startup focused on fabric simulation and digitalization.
+In 2020, I returned to IST Austria, as a research engineer.
+During my time here, I took a brief break to work at Meta Zurich for a few months, before returning to my current role.
+
+Outside of work, I like to experiment with new ideas and side projects. This blog is a place to share some of that exploration, whether it’s technical challenges, creative experiments, or simply things I find interesting.
+
+---
+
+### Why This Blog?
+
+Starting this blog has been on my mind for years, but for one reason or another, it kept getting postponed.
+
+Now feels like the right time.
+
+My goal is to share posts —whether long or short— about experiments, projects, useful resources, or ideas I find worth documenting and sharing.
+
+<!--
+---
+
+Feel free to reach out or connect:
+- [GitHub](https://github.com/eder-miguel)
+- [LinkedIn](https://linkedin.com/in/eder-miguel-4219668/)
+-->
+
+Thanks for visiting!
+
+
+ 

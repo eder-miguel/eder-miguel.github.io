@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs # GitHub Pages serves content from 'docs' by default
+
+website:
+  title: "My blog" # Replace with your blog's title
+  description: "Ideas, projects and experiments" # Short description
+  navbar:
+    right:
+      - href: about.qmd
+        text: About
+      - icon: github
+        href: https://github.com//<your-repo-name> # Replace with your GitHub URL
+    search: true # Enables a search bar in the navbar
+
+format:
+  html:
+    theme: cosmo # Choose a Bootstrap theme or custom theme
+    css: styles.css # Optional: Add your custom CSS
+    toc: true # Enable Table of Contents for each page
+    toc-depth: 2 # Depth for TOC entries
+    highlight-style: github # Syntax highlighting style for code blocks
+
+metadata-files:
+  - _metadata.yml # Optional: Separate metadata for reuse
