@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "Personal Notes",
     "section": "",
-    "text": "About Me\nHi, I’m Eder Miguel.\nI enjoy exploring computational solutions to practical problems and am always looking for opportunities to learn something new. I currently work as a Research Software Engineer at IST Austria, where I focus on developing tools for super-resolution light microscopy. This includes tasks like image and volume segmentation, stitching large microscopy datasets, and analyzing data to help biologists and neuroscientists make sense of their results.\nBefore this, I worked on physics-based simulations, particularly data-driven methods for fabric mechanics and computational design tools. Along the way, I’ve also explored topics like soft robotics, neural rendering, contact simulation, and real-time hand interaction simulations.\nI obtained my PhD in Computer Graphics in 2014. Afterward, I was a postdoctoral researcher at IST Austria and in 2017, I co-founded Desilico Labs (now Seddi), a startup focused on fabric simulation and digitalization. In 2020, I returned to IST Austria, as a research engineer. During my time here, I took a brief break to work at Meta Zurich for a few months, before returning to my current role.\nOutside of work, I like to experiment with new ideas and side projects. This blog is a place to share some of that exploration, whether it’s technical challenges, creative experiments, or simply things I find interesting.\n\n\nWhy This Blog?\nStarting this blog has been on my mind for years, but for one reason or another, it kept getting postponed.\nNow feels like the right time.\nMy goal is to share posts —whether long or short— about experiments, projects, useful resources, or ideas I find worth documenting and sharing.\n\nThanks for visiting!"
+    "text": "Personal Notes\nWelcome to my collection of personal notes. Hope you find them useful!\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nSetup Jupyterlab on conda environments\n\n\nMy go-to solution to setup Jupyterlab on conda…\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About Me",
+    "section": "",
+    "text": "About Me\nHi, I’m Eder Miguel.\nI enjoy exploring computational solutions to practical problems and am always looking for opportunities to learn something new. I currently work as a Research Software Engineer at IST Austria, where I focus on developing tools for super-resolution light microscopy. This includes tasks like image and volume segmentation, stitching large microscopy datasets, and analyzing data to help biologists and neuroscientists make sense of their results.\nBefore this, I worked on physics-based simulations, particularly data-driven methods for fabric mechanics and computational design tools. Along the way, I’ve also explored topics like soft robotics, neural rendering, contact simulation, and real-time hand interaction simulations.\nI obtained my PhD in Computer Graphics in 2014. Afterwards, I was a postdoctoral researcher at IST Austria and in 2017, I co-founded Desilico Labs (now Seddi), a startup focused on fabric simulation and digitalization. In 2020, I returned to IST Austria, as a research engineer. During my time here, I took a brief break to work at Meta Zurich for a few months, before returning to my current role.\nOutside of work, I like to experiment with new ideas and side projects. This blog is a place to share some of that exploration, or simply things I find interesting.\n\n\nWhy This Blog?\nStarting this blog has been on my mind for years, but for one reason or another, it kept getting postponed.\nNow feels like the right time.\nMy goal is to share posts —whether long or short— about experiments, projects, useful resources, or ideas I find worth documenting and sharing.\n\nThanks for visiting!"
   },
   {
     "objectID": "publications.html",
@@ -12,13 +19,6 @@
     "title": "Publications",
     "section": "",
     "text": "Author(s): Velicky, P., Miguel, E., Michalska, J.M. et al. Published in: Nat. Methods 20, 1256–1265 (2023). Link to publication\n\n\n\n\n\n\n Author(s): Casafranca, J. J., Cirio, G., Rodriguez, A., Miguel, E., Otaduy, M. A. Published in: Computer Graphics Forum Vol. 39(2). Link to publication\n\n\n\n\n\n\n Author(s): Malomo, L., Perez, J., Iarussi, E., Pietroni, N., Miguel, E., Cignoni, P., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 37(6) (SIGGRAPH Asia 2018). Link to publication\n\n\n\n\n\n\n Author(s): Guseinov R., Miguel E., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 36(4) (SIGGRAPH 2017). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Lepoutre, M., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 35(4) (SIGGRAPH 2016). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Miraut, D., Otaduy, M.A. Published in: Computer Graphics Forum (Proc. of Eurographics), Volume 35, Number 2, 2016. Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Tamstorf, R., Bradley, D., Schvartzman, S.C., Thomaszewsky, B., Bickel, B., Matusik, W., Marschner, S., Otaduy, M.A. Published in: ACM Transactions on Graphics, Vol. 32 (SIGGRAPH Asia 2013). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Bradley, D.,Thomaszewsky, B., Bickel, B., Matusik, W., Otaduy, M.A., Marschner, S. Published in: Computer Graphics Forum, Vol. 31 (2) (Proc. of Eurographics 2012). Link to publication"
-  },
-  {
-    "objectID": "publications.html#research-publications",
-    "href": "publications.html#research-publications",
-    "title": "Publications",
-    "section": "",
-    "text": "Here are some of my selected research publications:\n\n\nAuthor(s): Philipp Velicky, Eder Miguel, Julia M. Michalska, Donglai Wei, Zudi Lin, Jake F. Watson, Jakob Troidl, Johanna Beyer, Yoav Ben-Simon, Christoph Sommer, Wiebke Jahr, Alban Cenameri, Johannes Broichhagen, Seth G. N. Grant, Peter Jonas, Gaia Novarino, Hanspeter Pfister, Bernd Bickel, Johann G. Danzl. Published in: Nature Methods, July 10th, 2023. Link to publication\n\n\n\nAuthor(s): Author1, Author2\nPublished in: Conference Name, Year\nLink to publication\n\n\n\nAuthor(s): Author1, Author2, Author3\nPublished in: Journal Name, Year\nLink to publication"
   },
   {
     "objectID": "publications.html#journal-publications",

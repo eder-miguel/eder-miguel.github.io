@@ -1,9 +1,0 @@
-project:
-  output-dir: _docs
-
-website:
-  title: "blog"
-  site-url: "https://eder-miguel.github.io/blog"
-  description: "Blog to write about ideas, projects and thoughts"
-  repo-branch: main
-  repo-url: "https://github.com/eder-miguel/blog"
