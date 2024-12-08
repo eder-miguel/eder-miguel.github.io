@@ -162,7 +162,12 @@ conda install ipykernel ipympl ipywidgets</code></pre>
 <section id="accessing-multiple-environments-from-jupyter" class="level2">
 <h2 class="anchored" data-anchor-id="accessing-multiple-environments-from-jupyter">Accessing multiple environments from Jupyter</h2>
 <p>Over the years I have faced many times the task of setting up several virtual environments that would be used from Jupyter notebooks. Initially I resorted to the “simple” but pretty horrible idea of installing Jupyter in every virtual environment. This quickly leads to friction since using a different virtual environment required starting a different Jupyter server which is tedious.</p>
-<p>My current approach is: 1. Install Jupyter Lab and the <code>nb_conda_kernels</code> extension in the base environment 2. Whenever I create a virtual environment that I want to access in Jupyter, I install <code>ipykernel</code> such that the environment will be visible from Jupyter 3. Start Jupyter (always from <code>base</code> environment), create a notebook and select the desired virtual environment</p>
+<p>My current approach is:</p>
+<ol type="1">
+<li>Install Jupyter Lab and the <code>nb_conda_kernels</code> extension in the base environment</li>
+<li>Add <code>ipykernel</code> to any environment I want accessible in Jupyter</li>
+<li>Start Jupyter from the base environment, create a notebook, and select the desired virtual environment</li>
+</ol>
 <p>I have found no downside with this setup, other than having to install <code>nb_conda_kernels</code> extension in the <code>base</code> environment and <code>ipykernel</code> in each virtual environment, which is no effort compared to the mess of having a separate Jupyter in each virtual environment.</p>
 <p>I also install additional packages such as <code>jupyter_contrib_extensions</code> and <code>jupyterlab_widgets</code>, which I use in most of my projects.</p>
 <section id="links" class="level3">
