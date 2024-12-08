@@ -6,8 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-12-01">
-<meta name="description" content="My go-to solution to setup Jupyterlab on conda environments">
+<meta name="description" content="My template to setup Jupyterlab and conda environments">
 
 <title>Setup Jupyterlab on conda environments – My blog</title>
 <style>
@@ -109,8 +108,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TL;DR</a></li>
+  <li><a href="#accessing-multiple-environments-from-jupyter" id="toc-accessing-multiple-environments-from-jupyter" class="nav-link" data-scroll-target="#accessing-multiple-environments-from-jupyter">Accessing multiple environments from Jupyter</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -127,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    My go-to solution to setup Jupyterlab on conda environments
+    My template to setup Jupyterlab and conda environments
   </div>
 </div>
 
@@ -135,12 +141,6 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -150,8 +150,32 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="tldr" class="level2">
+<h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
+<p>In the base environment:</p>
+<pre><code>conda install pip ipympl jupyterlab nb_conda_kernels jupyter_contrib_nbextensions jupyterlab_widgets</code></pre>
+<p>Then, for each virtual environment that should be available in Jupyter:</p>
+<pre><code>conda create -n [env_name] python==[required python version] pip
+conda activate [env_name]
+conda install ipykernel ipympl ipywidgets</code></pre>
+</section>
+<section id="accessing-multiple-environments-from-jupyter" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-multiple-environments-from-jupyter">Accessing multiple environments from Jupyter</h2>
+<p>Over the years I have faced many times the task of setting up several virtual environments that would be used from Jupyter notebooks. Initially I resorted to the “simple” but pretty horrible idea of installing Jupyter in every virtual environment. This quickly leads to friction since using a different virtual environment required starting a different Jupyter server which is tedious.</p>
+<p>My current approach is: 1. Install Jupyter Lab and the <code>nb_conda_kernels</code> extension in the base environment 2. Whenever I create a virtual environment that I want to access in Jupyter, I install <code>ipykernel</code> such that the environment will be visible from Jupyter 3. Start Jupyter (always from <code>base</code> environment), create a notebook and select the desired virtual environment</p>
+<p>I have found no downside with this setup, other than having to install <code>nb_conda_kernels</code> extension in the <code>base</code> environment and <code>ipykernel</code> in each virtual environment, which is no effort compared to the mess of having a separate Jupyter in each virtual environment.</p>
+<p>I also install additional packages such as <code>jupyter_contrib_extensions</code> and <code>jupyterlab_widgets</code>, which I use in most of my projects.</p>
+<section id="links" class="level3">
+<h3 class="anchored" data-anchor-id="links">Links</h3>
+<ul>
+<li><code>nb_conda_kernels</code> <a href="https://github.com/anaconda/nb_conda_kernels">here</a></li>
+<li><code>ipykernel</code> <a href="https://github.com/ipython/ipykernel">here</a></li>
+<li><a href="https://towardsdatascience.com/how-to-set-up-anaconda-and-jupyter-notebook-the-right-way-de3b7623ea4a">Post</a> where I found out about this approach first</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

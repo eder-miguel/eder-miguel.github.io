@@ -4,7 +4,7 @@
     "href": "notes/index.html",
     "title": "Personal Notes",
     "section": "",
-    "text": "Personal Notes\nWelcome to my collection of personal notes. Hope you find them useful!\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nSetup Jupyterlab on conda environments\n\n\nMy go-to solution to setup Jupyterlab on conda…\n\n\n\n\n\nNo matching items"
+    "text": "Personal Notes\nWelcome to my collection of personal notes. Hope you find them useful!\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nSetup Jupyterlab on conda environments\n\n\nMy template to setup Jupyterlab and conda…\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -33,5 +33,26 @@
     "title": "Publications",
     "section": "Conference Publications",
     "text": "Conference Publications\n\nEfficient FEM-based simulation of soft robots modeled as kinematic chains\n Author(s): Pozzi, M., Miguel, E., Deimel, R., Malvezzi, M., Bickel, B., Brock, O., Prattichizzo, D. Published in: IEEE International Conference on Robotics and Automation 2018. Link to publication\n\n\n\n\n\nCharacterization of Nonlinear Finger Pad Mechanics for Tactile Rendering\n Author(s): Miguel, E., DAngelo, M.L., Cannella, F., Bianchi, M., Memeo, M., Bicchi, A., Caldwell, D.G., Otaduy, M.A. Published in: Proc. of World Haptics Conference, 2015. Link to publication\n\n\n\n\n\nTowards Cloth-Manipulating Characters\n Author(s): Miguel, E., Feng, A., Xu, Y. and Shapiro, A. Published in: Short paper in Computer Animation and Social Agents 2014, Houston. Link to publication\n\n\n\n\n\nEfficient Simulation of Contact Between Rigid and Deformable Objects\n Author(s): Miguel, E. and Otaduy, M.A. Published in: Proc. of Multibody Dynamics, Brussels, July 2011. Link to publication\n\n\n\n\n\nModeling and Simulation of a Human Shoulder for Interactive Medical Applications\n Author(s): Otaduy, M.A., Garre, C., Gascon, J., Miguel, E., Perez, A.G., Zurdo, J.S. Published in: Proc. of CEIG (Spanish Computer Graphics Conference), September 2010. Link to publication"
+  },
+  {
+    "objectID": "notes/setup_jupyter_on_conda_environments.html",
+    "href": "notes/setup_jupyter_on_conda_environments.html",
+    "title": "Setup Jupyterlab on conda environments",
+    "section": "",
+    "text": "In the base environment:\nconda install pip ipympl jupyterlab nb_conda_kernels jupyter_contrib_nbextensions jupyterlab_widgets\nThen, for each virtual environment that should be available in Jupyter:\nconda create -n [env_name] python==[required python version] pip\nconda activate [env_name]\nconda install ipykernel ipympl ipywidgets"
+  },
+  {
+    "objectID": "notes/setup_jupyter_on_conda_environments.html#tldr",
+    "href": "notes/setup_jupyter_on_conda_environments.html#tldr",
+    "title": "Setup Jupyterlab on conda environments",
+    "section": "",
+    "text": "In the base environment:\nconda install pip ipympl jupyterlab nb_conda_kernels jupyter_contrib_nbextensions jupyterlab_widgets\nThen, for each virtual environment that should be available in Jupyter:\nconda create -n [env_name] python==[required python version] pip\nconda activate [env_name]\nconda install ipykernel ipympl ipywidgets"
+  },
+  {
+    "objectID": "notes/setup_jupyter_on_conda_environments.html#accessing-multiple-environments-from-jupyter",
+    "href": "notes/setup_jupyter_on_conda_environments.html#accessing-multiple-environments-from-jupyter",
+    "title": "Setup Jupyterlab on conda environments",
+    "section": "Accessing multiple environments from Jupyter",
+    "text": "Accessing multiple environments from Jupyter\nOver the years I have faced many times the task of setting up several virtual environments that would be used from Jupyter notebooks. Initially I resorted to the “simple” but pretty horrible idea of installing Jupyter in every virtual environment. This quickly leads to friction since using a different virtual environment required starting a different Jupyter server which is tedious.\nMy current approach is: 1. Install Jupyter Lab and the nb_conda_kernels extension in the base environment 2. Whenever I create a virtual environment that I want to access in Jupyter, I install ipykernel such that the environment will be visible from Jupyter 3. Start Jupyter (always from base environment), create a notebook and select the desired virtual environment\nI have found no downside with this setup, other than having to install nb_conda_kernels extension in the base environment and ipykernel in each virtual environment, which is no effort compared to the mess of having a separate Jupyter in each virtual environment.\nI also install additional packages such as jupyter_contrib_extensions and jupyterlab_widgets, which I use in most of my projects.\n\nLinks\n\nnb_conda_kernels here\nipykernel here\nPost where I found out about this approach first"
   }
 ]
