@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="How to run Jupyter on a remote server and access it locally">
 
-<title>index – My blog</title>
+<title>Running Jupyter from a remote server – My blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,65 +67,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -153,7 +94,7 @@ window.Quarto = {
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../notes/index.html" aria-current="page"> 
+    <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Notes</span></a>
   </li>  
 </ul>
@@ -172,75 +113,75 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#personal-notes" id="toc-personal-notes" class="nav-link active" data-scroll-target="#personal-notes">Personal Notes</a></li>
+  <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TL;DR</a></li>
+  <li><a href="#breakdown" id="toc-breakdown" class="nav-link" data-scroll-target="#breakdown">Breakdown</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Running Jupyter from a remote server</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">notes</div>
+    <div class="quarto-category">jupyter</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    How to run Jupyter on a remote server and access it locally
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="personal-notes" class="level1">
-<h1>Personal Notes</h1>
-<p>Welcome to my collection of personal notes. Hope you find them useful!</p>
+</header>
 
+
+<section id="tldr" class="level2">
+<h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
+<p>SSH into the remote server and run Jupyter:</p>
+<pre><code>ssh [user@remote]
+jupyter lab --no-browser --port=[port_in_remote]</code></pre>
+<p>Note that the output of the last command should include a token. We will need it when accessing the remote server from the local machine (next step).</p>
+<p>On the local machine, create an SSH tunnel to forward the remote port to your local machine:</p>
+<pre><code>ssh -NfL localhost:[port_in_local]:localhost:[port_in_remote] [user@remote]</code></pre>
+<p>Finally, on your local browser, access <code>http://localhost:[port_in_local]</code>. The token produced in step one may be necessary to access the Jupyter server.</p>
+</section>
+<section id="breakdown" class="level2">
+<h2 class="anchored" data-anchor-id="breakdown">Breakdown</h2>
+<ol type="1">
+<li>We run Jupyter in the remote machine using <code>--no-browser</code> so that no browser is opened in the remote machine.</li>
+<li>Any available port can be specified to avoid port collisions.</li>
+<li>The <code>-Nf</code> options for the SSH tunnel run the SSH session in the background (<code>-f</code>) without executing remote commands (<code>-N</code>).</li>
+<li>The item <code>localhost:[port_in_local]:localhost:[port_in_remote]</code> can be split in two parts. The first <code>localhost:[port_in_local]</code> specifies the local address (the address on the local machine where the port is being opened), in this case <code>localhost</code>, indicating that only the local machine can access that port, and the local port, <code>[port_in_local]</code>, where the tunnel will listen. The second <code>localhost:[port_in_remote]</code> indicates the address on the remote machine to connect to, here <code>localhost</code>, meaning that SSH will connect to a service running on the local machine, and <code>[port_in_remote]</code>, which specifies the port in the remote machine to which the tunnel connects.</li>
+<li>In order to access the remote Jupyter server, we access the local port of the SSH tunnel via <code>http://localhost:[port_in_local]</code>.</li>
+</ol>
+<section id="resources" class="level3">
+<h3 class="anchored" data-anchor-id="resources">Resources</h3>
+<ul>
+<li><a href="https://stackoverflow.com/questions/69244218/how-to-run-a-jupyter-notebook-through-a-remote-server-on-local-machine">Stackoverflow</a></li>
+<li><a href="https://hamel.dev/notes/jupyter/Best%20Way%20To%20Launch%20Jupyter%20On%20A%20Remote%20Server.html">Found in Hamel’s blog</a></li>
+<li><a href="https://fizzylogic.nl/2017/11/06/edit-jupyter-notebooks-over-ssh/">Similar instructions</a> found in <a href="https://fizzylogic.nl/">Willem’s Fizzy Logic</a></li>
+<li><a href="https://dbusteed.github.io/setup-jupyter-lab-on-remote-server/">A more advanced</a> approach using HTTPS by <a href="https://dbusteed.github.io/">Davis Busteed</a></li>
+</ul>
 
 
 </section>
+</section>
 
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-Description
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="bm90ZXMlMkNqdXB5dGVy" data-listing-file-modified-sort="1733952355481" data-listing-reading-time-sort="2" data-listing-word-count-sort="263" data-listing-title-sort="Running Jupyter from a remote server" data-listing-filename-sort="running_jupyter_on_remote_server.ipynb">
-<td>
-<a href="../notes/running_jupyter_on_remote_server.html" class="title listing-title">Running Jupyter from a remote server</a>
-</td>
-<td>
-<span class="listing-description">How to run Jupyter on a remote server and access…</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="bm90ZXMlMkNqdXB5dGVyJTJDY29uZGE=" data-listing-file-modified-sort="1733950554021" data-listing-reading-time-sort="1" data-listing-word-count-sort="145" data-listing-title-sort="Setup Jupyterlab on conda environments" data-listing-filename-sort="setup_jupyter_on_conda_environments.ipynb">
-<td>
-<a href="../notes/setup_jupyter_on_conda_environments.html" class="title listing-title">Setup Jupyterlab on conda environments</a>
-</td>
-<td>
-<span class="listing-description">My template to setup Jupyterlab and conda…</span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
