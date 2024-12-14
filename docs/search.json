@@ -25,7 +25,21 @@
     "href": "notes/setup_jupyter_on_conda_environments.html#breakdown",
     "title": "Setup Jupyterlab on conda environments",
     "section": "Breakdown",
-    "text": "Breakdown\n\nAs an alternative, one could install a separate Jupyter instance on each virtual environment. In my experience it is tedious and error prone. For me the approach above works best.\nThe nb_conda_kernels extension enables access to individual virtual environments from the Jupyter instance installed in the base environent.\nAdding ipykernel allows the virtual environment to be accessible by Jupyter.\nJupyter is always started in the base environment. Then, each individual notebook will use one of the installed environments.\nI also install additional packages such as jupyter_contrib_extensions and jupyterlab_widgets, which I use in most of my projects.\n\n\nResources\n\nnb_conda_kernels here\nipykernel here\nPost where I found out about this approach first"
+    "text": "Breakdown\n\nAs an alternative, one could install a separate Jupyter instance on each virtual environment. In my experience it is tedious and error prone. For me the approach above works best.\nThe nb_conda_kernels extension enables access to individual virtual environments from the Jupyter instance installed in the base environent.\nAdding ipykernel allows the virtual environment to be accessible by Jupyter.\nJupyter is always started in the base environment. Then, each individual notebook will use one of the installed environments.\nI also install additional packages such as jupyter_contrib_extensions and jupyterlab_widgets, which I use in most of my projects."
+  },
+  {
+    "objectID": "notes/setup_jupyter_on_conda_environments.html#resources",
+    "href": "notes/setup_jupyter_on_conda_environments.html#resources",
+    "title": "Setup Jupyterlab on conda environments",
+    "section": "Resources",
+    "text": "Resources\n\nnb_conda_kernels here\nipykernel here\nPost where I found out about this approach first"
+  },
+  {
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "No matching items"
   },
   {
     "objectID": "publications.html",
@@ -74,6 +88,13 @@
     "href": "notes/running_jupyter_on_remote_server.html#breakdown",
     "title": "Running Jupyter from a remote server",
     "section": "Breakdown",
-    "text": "Breakdown\n\nWe run Jupyter in the remote machine using --no-browser so that no browser is opened in the remote machine.\nAny available port can be specified to avoid port collisions.\nThe -Nf options for the SSH tunnel run the SSH session in the background (-f) without executing remote commands (-N).\nThe item localhost:[port_in_local]:localhost:[port_in_remote] can be split in two parts. The first localhost:[port_in_local] specifies the local address (the address on the local machine where the port is being opened), in this case localhost, indicating that only the local machine can access that port, and the local port, [port_in_local], where the tunnel will listen. The second localhost:[port_in_remote] indicates the address on the remote machine to connect to, here localhost, meaning that SSH will connect to a service running on the local machine, and [port_in_remote], which specifies the port in the remote machine to which the tunnel connects.\nIn order to access the remote Jupyter server, we access the local port of the SSH tunnel via http://localhost:[port_in_local].\n\n\nResources\n\nStackoverflow\nFound in Hamel’s blog\nSimilar instructions found in Willem’s Fizzy Logic\nA more advanced approach using HTTPS by Davis Busteed"
+    "text": "Breakdown\n\nWe run Jupyter in the remote machine using --no-browser so that no browser is opened in the remote machine.\nAny available port can be specified to avoid port collisions.\nThe -Nf options for the SSH tunnel run the SSH session in the background (-f) without executing remote commands (-N).\nThe item localhost:[port_in_local]:localhost:[port_in_remote] can be split in two parts. The first localhost:[port_in_local] specifies the local address (the address on the local machine where the port is being opened), in this case localhost, indicating that only the local machine can access that port, and the local port, [port_in_local], where the tunnel will listen. The second localhost:[port_in_remote] indicates the address on the remote machine to connect to, here localhost, meaning that SSH will connect to a service running on the local machine, and [port_in_remote], which specifies the port in the remote machine to which the tunnel connects.\nIn order to access the remote Jupyter server, we access the local port of the SSH tunnel via http://localhost:[port_in_local]."
+  },
+  {
+    "objectID": "notes/running_jupyter_on_remote_server.html#resources",
+    "href": "notes/running_jupyter_on_remote_server.html#resources",
+    "title": "Running Jupyter from a remote server",
+    "section": "Resources",
+    "text": "Resources\n\nStackoverflow\nFound in Hamel’s blog\nSimilar instructions found in Willem’s Fizzy Logic\nA more advanced approach using HTTPS by Davis Busteed"
   }
 ]

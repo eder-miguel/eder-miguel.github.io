@@ -5,5 +5,9 @@
       "/notes/running_jupyter_on_remote_server.html",
       "/notes/setup_jupyter_on_conda_environments.html"
     ]
+  },
+  {
+    "listing": "/posts/index.html",
+    "items": []
   }
 ]

@@ -97,6 +97,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Notes</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../posts/index.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -115,6 +119,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TL;DR</a></li>
   <li><a href="#breakdown" id="toc-breakdown" class="nav-link" data-scroll-target="#breakdown">Breakdown</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
 </nav>
     </div>
@@ -168,8 +173,9 @@ jupyter lab --no-browser --port=[port_in_remote]</code></pre>
 <li>The item <code>localhost:[port_in_local]:localhost:[port_in_remote]</code> can be split in two parts. The first <code>localhost:[port_in_local]</code> specifies the local address (the address on the local machine where the port is being opened), in this case <code>localhost</code>, indicating that only the local machine can access that port, and the local port, <code>[port_in_local]</code>, where the tunnel will listen. The second <code>localhost:[port_in_remote]</code> indicates the address on the remote machine to connect to, here <code>localhost</code>, meaning that SSH will connect to a service running on the local machine, and <code>[port_in_remote]</code>, which specifies the port in the remote machine to which the tunnel connects.</li>
 <li>In order to access the remote Jupyter server, we access the local port of the SSH tunnel via <code>http://localhost:[port_in_local]</code>.</li>
 </ol>
-<section id="resources" class="level3">
-<h3 class="anchored" data-anchor-id="resources">Resources</h3>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
 <ul>
 <li><a href="https://stackoverflow.com/questions/69244218/how-to-run-a-jupyter-notebook-through-a-remote-server-on-local-machine">Stackoverflow</a></li>
 <li><a href="https://hamel.dev/notes/jupyter/Best%20Way%20To%20Launch%20Jupyter%20On%20A%20Remote%20Server.html">Found in Hamel’s blog</a></li>
@@ -178,7 +184,6 @@ jupyter lab --no-browser --port=[port_in_remote]</code></pre>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
