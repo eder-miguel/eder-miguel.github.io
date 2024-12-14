@@ -11,6 +11,8 @@ website:
         text: Publications
       - href: notes/index.qmd
         text: Notes
+      - href: posts/index.qmd
+        text: Posts
     search: true # Enables a search bar in the navbar
 
 format:
