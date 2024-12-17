@@ -1,0 +1,13 @@
+---
+title: "Posts"
+description: "A collection of posts on various topics"
+format:
+  html:
+    code-fold: true
+listing:
+  contents: 
+    - "."
+  sort: "date desc"  # Sort by date in descending order
+  fields: [title, date, categories, description]  # Customize displayed fields
+  type: default  # Choose listing style (default, table, etc.)
+---

@@ -1,0 +1,10 @@
+body {
+  text-align: justify;
+}
+
+code {
+  background-color: #2e2e2e !important;
+  color: #f8f9fa !important;
+  padding: 2px 4px;
+  border-radius: 3px;
+}

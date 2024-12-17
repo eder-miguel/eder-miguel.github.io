@@ -1,0 +1,98 @@
+---
+title: "Publications"
+---
+
+## Journal Publications
+
+### Dense 4D nanoscale reconstruction of living brain tissue
+<img src="images/lioness.png" alt="Thumbnail for Dense 4D nanoscale reconstruction of living brain tissue" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Velicky, P., Miguel, E., Michalska, J.M. et al.<br/>
+*Published in:* Nat. Methods 20, 1256–1265 (2023).<br/>
+[Link to publication](https://doi.org/10.1038/s41592-023-01936-6)
+<div style="clear: both;"></div>
+
+### Mixing Yarns and Triangles in Cloth Simulation
+<img src="images/mixing_yarns_triangles.png" alt="Thumbnail for Mixing Yarns and Triangles in Cloth Simulation" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Casafranca, J. J., Cirio, G., Rodriguez, A., Miguel, E., Otaduy, M. A.<br/>
+*Published in:* Computer Graphics Forum Vol. 39(2).<br/>
+[Link to publication](https://doi.org/10.1111/cgf.13915)
+<div style="clear: both;"></div>
+
+### FlexMaps: Computational Design of Flat Flexible Shells for Shaping 3D Objects
+<img src="images/flexmaps.jpg" alt="Thumbnail for FlexMaps: Computational Design of Flat Flexible Shells for Shaping 3D Objects" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Malomo, L., Perez, J., Iarussi, E., Pietroni, N., Miguel, E., Cignoni, P., Bickel, B.<br/>
+*Published in:* ACM Transactions on Graphics, Vol. 37(6) (SIGGRAPH Asia 2018).<br/>
+[Link to publication](https://doi.org/10.1145/3272127.327507)
+<div style="clear: both;"></div>
+
+### CurveUps: Shaping Objects from Flat Plates with Tension-Actuated Curvature
+<img src="images/curveups.png" alt="Thumbnail for CurveUps: Shaping Objects from Flat Plates with Tension-Actuated Curvature" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Guseinov R., Miguel E., Bickel, B.<br/>
+*Published in:* ACM Transactions on Graphics, Vol. 36(4) (SIGGRAPH 2017).<br/>
+[Link to publication](https://doi.org/10.1145/3072959.307370)
+<div style="clear: both;"></div>
+
+### Computational Design of Stable Planar-Rod Structures
+<img src="images/cdosprs.png" alt="Thumbnail for Computational Design of Stable Planar-Rod Structures" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., Lepoutre, M., Bickel, B.<br/>
+*Published in:* ACM Transactions on Graphics, Vol. 35(4) (SIGGRAPH 2016).<br/>
+[Link to publication](https://doi.org/10.1145/2897824.292597)
+<div style="clear: both;"></div>
+
+### Modeling and Estimation of Energy-Based Hyperelastic Objects
+<img src="images/additive_energy.png" alt="Thumbnail for Modeling and Estimation of Energy-Based Hyperelastic Objects" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., Miraut, D., Otaduy, M.A.<br/>
+*Published in:* Computer Graphics Forum (Proc. of Eurographics), Volume 35, Number 2, 2016.<br/>
+[Link to publication](https://doi.org/10.1111/cgf.12840)
+<div style="clear: both;"></div>
+
+### Modeling and Estimation of Intenal Friction in Cloth
+<img src="images/friction_sample.png" alt="Thumbnail for Modeling and Estimation of Intenal Friction in Cloth" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., Tamstorf, R., Bradley, D., Schvartzman, S.C., Thomaszewsky, B., Bickel, B., Matusik, W., Marschner, S., Otaduy, M.A.<br/>
+*Published in:* ACM Transactions on Graphics, Vol. 32 (SIGGRAPH Asia 2013).<br/>
+[Link to publication](https://doi.org/10.1145/2508363.250838)
+<div style="clear: both;"></div>
+
+### Data-Driven Estimation of Cloth Simulation Models
+<img src="images/DDCsample.png" alt="Thumbnail for Data-Driven Estimation of Cloth Simulation Models" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., Bradley, D.,Thomaszewsky, B., Bickel, B., Matusik, W., Otaduy, M.A., Marschner, S.<br/>
+*Published in:* Computer Graphics Forum, Vol. 31 (2) (Proc. of Eurographics 2012).<br/>
+[Link to publication](https://doi.org/10.1111/j.1467-8659.2012.03031.x)
+<div style="clear: both;"></div>
+
+## Conference Publications
+
+### Efficient FEM-based simulation of soft robots modeled as kinematic chains
+<img src="images/soft_robots.png" alt="Thumbnail for Efficient FEM-based simulation of soft robots modeled as kinematic chains" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Pozzi, M., Miguel, E., Deimel, R., Malvezzi, M., Bickel, B., Brock, O., Prattichizzo, D.<br/>
+*Published in:* IEEE International Conference on Robotics and Automation 2018.<br/>
+[Link to publication](https://doi.org/10.1109/ICRA.2018.8461106)
+<div style="clear: both;"></div>
+
+### Characterization of Nonlinear Finger Pad Mechanics for Tactile Rendering
+<img src="images/finger_sample.jpg" alt="Thumbnail for Characterization of Nonlinear Finger Pad Mechanics for Tactile Rendering" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., DAngelo, M.L., Cannella, F., Bianchi, M., Memeo, M., Bicchi, A., Caldwell, D.G., Otaduy, M.A.<br/>
+*Published in:* Proc. of World Haptics Conference, 2015.<br/>
+[Link to publication](https://doi.org/10.1109/WHC.2015.7177692)
+<div style="clear: both;"></div>
+
+### Towards Cloth-Manipulating Characters
+<img src="images/tcmc_sample.png" alt="Thumbnail for Towards Cloth-Manipulating Characters" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E., Feng, A., Xu, Y. and Shapiro, A.<br/>
+*Published in:* Short paper in Computer Animation and Social Agents 2014, Houston.<br/>
+[Link to publication](https://cdfg.mit.edu/assets/images/towards_cloth-manipulating_characters20160207-12794-15w5427.pdf)
+<div style="clear: both;"></div>
+
+### Efficient Simulation of Contact Between Rigid and Deformable Objects
+<img src="images/rig_def_contact_vertebra.png" alt="Thumbnail for Efficient Simulation of Contact Between Rigid and Deformable Objects" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Miguel, E. and Otaduy, M.A.<br/>
+*Published in:* Proc. of Multibody Dynamics, Brussels, July 2011.<br/>
+[Link to publication](http://www.gmrv.es/Publications/2011/MO11/Multibody2011.pdf)
+<div style="clear: both;"></div>
+
+### Modeling and Simulation of a Human Shoulder for Interactive Medical Applications
+<img src="images/shoulder.png" alt="Thumbnail for Modeling and Simulation of a Human Shoulder for Interactive Medical Applications" width="180" style="float:left; margin-right: 15px; margin-bottom: 10px;"/>
+*Author(s):* Otaduy, M.A., Garre, C., Gascon, J., Miguel, E., Perez, A.G., Zurdo, J.S.<br/>
+*Published in:* Proc. of CEIG (Spanish Computer Graphics Conference), September 2010.<br/>
+[Link to publication](https://www.researchgate.net/publication/273759206_Modeling_and_Simulation_of_a_Human_Shoulder_for_Interactive_Medical_Applications)
+<div style="clear: both;"></div>

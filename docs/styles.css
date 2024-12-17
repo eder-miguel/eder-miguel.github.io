@@ -1,0 +1,10 @@
+body {
+  text-align: justify;
+}
+
+code {
+  background-color: #2e2e2e !important; /* Dark background for inline code */
+  color: #f8f9fa !important; /* Light text color for contrast */
+  padding: 2px 4px; /* Some padding to make it stand out */
+  border-radius: 3px; /* Optional: Adds rounded corners for a smoother look */
+}

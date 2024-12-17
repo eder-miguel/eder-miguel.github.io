@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "My blog"
+  description: "Ideas, projects and experiments"
+  navbar:
+    right:
+      - href: publications.qmd
+        text: Publications
+      - href: notes/index.qmd
+        text: Notes
+      - href: posts/index.qmd
+        text: Posts
+    search: true
+
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: true
+    toc-depth: 2
+
+metadata-files:
+  - _metadata.yml
