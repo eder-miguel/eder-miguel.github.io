@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="How to run Jupyter on a remote server and access it locally">
+<meta name="description" content="How to configure a remote host in the SSH config file">
 
-<title>Running Jupyter from a remote server – My blog</title>
+<title>SSH configuration file – My blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,16 +162,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Running Jupyter from a remote server</h1>
+<h1 class="title">SSH configuration file</h1>
   <div class="quarto-categories">
     <div class="quarto-category">notes</div>
-    <div class="quarto-category">jupyter</div>
+    <div class="quarto-category">ssh</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    How to run Jupyter on a remote server and access it locally
+    How to configure a remote host in the SSH config file
   </div>
 </div>
 
@@ -190,31 +190,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="tldr" class="level2">
 <h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
-<p>SSH into the remote server and run Jupyter:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="pp">[</span><span class="ss">user@remote</span><span class="pp">]</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab <span class="at">--no-browser</span> <span class="at">--port</span><span class="op">=</span><span class="pp">[</span><span class="ss">port_in_remote</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note that the output of the last command should include a token. We will need it when accessing the remote server from the local machine (next step).</p>
-<p>On the local machine, create an SSH tunnel to forward the remote port to your local machine:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-NfL</span> localhost:<span class="pp">[</span><span class="ss">port_in_local</span><span class="pp">]</span>:localhost:<span class="pp">[</span><span class="ss">port_in_remote</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">user@remote</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Finally, on your local browser, access <code>http://localhost:[port_in_local]</code>. The token produced in step one may be necessary to access the Jupyter server.</p>
+<p>To add a new connection to the SSH config file (<code>~/.ssh/config</code>), open it and write the following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> <span class="pp">[</span><span class="ss">hostname_alias</span><span class="pp">]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HostName</span> <span class="pp">[</span><span class="ss">hostname</span><span class="pp">]</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">User</span> <span class="pp">[</span><span class="ss">username</span><span class="pp">]</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#PubKeyAuthentication yes # If accessing via SSH</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#IdentityFile ~/.ssh/id_ed25519 # point to the private SSH key if available</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#OTHER_SSH_OPTION value # General format of SSH options</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, from terminal, executing <code>ssh [hostname_alias]</code> will try to set a connection to the specified <code>HostName</code> using the specified <code>User</code>.</p>
 </section>
 <section id="breakdown" class="level2">
 <h2 class="anchored" data-anchor-id="breakdown">Breakdown</h2>
 <ol type="1">
-<li>We run Jupyter in the remote machine using <code>--no-browser</code> so that no browser is opened in the remote machine.</li>
-<li>Any available port can be specified to avoid port collisions.</li>
-<li>The <code>-Nf</code> options for the SSH tunnel run the SSH session in the background (<code>-f</code>) without executing remote commands (<code>-N</code>).</li>
-<li>The item <code>localhost:[port_in_local]:localhost:[port_in_remote]</code> can be split in two parts. The first <code>localhost:[port_in_local]</code> specifies the local address (the address on the local machine where the port is being opened), in this case <code>localhost</code>, indicating that only the local machine can access that port, and the local port, <code>[port_in_local]</code>, where the tunnel will listen. The second <code>localhost:[port_in_remote]</code> indicates the address on the remote machine to connect to, here <code>localhost</code>, meaning that SSH will connect to a service running on the local machine, and <code>[port_in_remote]</code>, which specifies the port in the remote machine to which the tunnel connects.</li>
-<li>In order to access the remote Jupyter server, we access the local port of the SSH tunnel via <code>http://localhost:[port_in_local]</code>.</li>
+<li>Each section starting with <code>Host</code> defines a connection. The lines below this statement define properties of the specific connection.</li>
+<li><code>[hostname_alias]</code> specifies an alias for the connection locally. Different aliases may specify the same <code>HostName</code>, e.g.&nbsp;to handle different users on a remote server.</li>
+<li><code>HostName [hostname]</code> specifies the target <code>hostname</code>. It can be an IP address (<code>86.87.88.89</code>) or a text string (<code>github.com</code>). In the first case no domain resolution is necessary. In the second, the internal <code>/etc/hosts</code> file will be queried and if no match is found a DNS query will be performed.</li>
+<li><code>User [username]</code> indicates the username to use in that SSH connection. If not not defined, it defaults to the current username.</li>
 </ol>
+<p>A real example I use to connect to my home Raspberry Pi:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> raspberry</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Hostname</span> 192.168.X.Y</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">PubKeyAuthentication</span> yes <span class="co">#</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
 <ul>
-<li><a href="https://stackoverflow.com/questions/69244218/how-to-run-a-jupyter-notebook-through-a-remote-server-on-local-machine">Stackoverflow</a></li>
-<li><a href="https://hamel.dev/notes/jupyter/Best%20Way%20To%20Launch%20Jupyter%20On%20A%20Remote%20Server.html">Found in Hamel’s blog</a></li>
-<li><a href="https://fizzylogic.nl/2017/11/06/edit-jupyter-notebooks-over-ssh/">Similar instructions</a> found in <a href="https://fizzylogic.nl/">Willem’s Fizzy Logic</a></li>
-<li><a href="https://dbusteed.github.io/setup-jupyter-lab-on-remote-server/">A more advanced</a> approach using HTTPS by <a href="https://dbusteed.github.io/">Davis Busteed</a></li>
+<li><a href="https://linuxize.com/post/using-the-ssh-config-file/">Useful summary</a> of SSH config file format and options.</li>
+<li><a href="https://superuser.com/questions/1659959/ssh-config-vs-etc-hosts">Stackoverflow thread</a> on the interaction between <code>/etc/hosts</code> and <code>~/.ssh/config</code>.</li>
 </ul>
 
 

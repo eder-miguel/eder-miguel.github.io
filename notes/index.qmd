@@ -8,4 +8,4 @@ listing:
 
 # Personal Notes
 
-Welcome to my collection of personal notes. Hope you find them useful!
+These are some notes, procedures or code snippets I find useful myself and tend to use relatively often.
