@@ -9,10 +9,10 @@ website:
     right:
       - href: publications.qmd
         text: Publications
-      - href: notes/index.qmd
-        text: Notes
       - href: posts/index.qmd
         text: Posts
+      - href: notes/index.qmd
+        text: Notes
     search: true
 
 format:
