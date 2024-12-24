@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Author(s): Velicky, P., Miguel, E., Michalska, J.M. et al. Published in: Nat. Methods 20, 1256–1265 (2023). Link to publication\n\n\n\n\n\n\n Author(s): Casafranca, J. J., Cirio, G., Rodriguez, A., Miguel, E., Otaduy, M. A. Published in: Computer Graphics Forum Vol. 39(2). Link to publication\n\n\n\n\n\n\n Author(s): Malomo, L., Perez, J., Iarussi, E., Pietroni, N., Miguel, E., Cignoni, P., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 37(6) (SIGGRAPH Asia 2018). Link to publication\n\n\n\n\n\n\n Author(s): Guseinov R., Miguel E., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 36(4) (SIGGRAPH 2017). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Lepoutre, M., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 35(4) (SIGGRAPH 2016). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Miraut, D., Otaduy, M.A. Published in: Computer Graphics Forum (Proc. of Eurographics), Volume 35, Number 2, 2016. Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Tamstorf, R., Bradley, D., Schvartzman, S.C., Thomaszewsky, B., Bickel, B., Matusik, W., Marschner, S., Otaduy, M.A. Published in: ACM Transactions on Graphics, Vol. 32 (SIGGRAPH Asia 2013). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Bradley, D.,Thomaszewsky, B., Bickel, B., Matusik, W., Otaduy, M.A., Marschner, S. Published in: Computer Graphics Forum, Vol. 31 (2) (Proc. of Eurographics 2012). Link to publication"
+  },
+  {
+    "objectID": "publications.html#journal-publications",
+    "href": "publications.html#journal-publications",
+    "title": "Publications",
+    "section": "",
+    "text": "Author(s): Velicky, P., Miguel, E., Michalska, J.M. et al. Published in: Nat. Methods 20, 1256–1265 (2023). Link to publication\n\n\n\n\n\n\n Author(s): Casafranca, J. J., Cirio, G., Rodriguez, A., Miguel, E., Otaduy, M. A. Published in: Computer Graphics Forum Vol. 39(2). Link to publication\n\n\n\n\n\n\n Author(s): Malomo, L., Perez, J., Iarussi, E., Pietroni, N., Miguel, E., Cignoni, P., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 37(6) (SIGGRAPH Asia 2018). Link to publication\n\n\n\n\n\n\n Author(s): Guseinov R., Miguel E., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 36(4) (SIGGRAPH 2017). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Lepoutre, M., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 35(4) (SIGGRAPH 2016). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Miraut, D., Otaduy, M.A. Published in: Computer Graphics Forum (Proc. of Eurographics), Volume 35, Number 2, 2016. Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Tamstorf, R., Bradley, D., Schvartzman, S.C., Thomaszewsky, B., Bickel, B., Matusik, W., Marschner, S., Otaduy, M.A. Published in: ACM Transactions on Graphics, Vol. 32 (SIGGRAPH Asia 2013). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Bradley, D.,Thomaszewsky, B., Bickel, B., Matusik, W., Otaduy, M.A., Marschner, S. Published in: Computer Graphics Forum, Vol. 31 (2) (Proc. of Eurographics 2012). Link to publication"
+  },
+  {
+    "objectID": "publications.html#conference-publications",
+    "href": "publications.html#conference-publications",
+    "title": "Publications",
+    "section": "Conference Publications",
+    "text": "Conference Publications\n\nEfficient FEM-based simulation of soft robots modeled as kinematic chains\n Author(s): Pozzi, M., Miguel, E., Deimel, R., Malvezzi, M., Bickel, B., Brock, O., Prattichizzo, D. Published in: IEEE International Conference on Robotics and Automation 2018. Link to publication\n\n\n\n\n\nCharacterization of Nonlinear Finger Pad Mechanics for Tactile Rendering\n Author(s): Miguel, E., DAngelo, M.L., Cannella, F., Bianchi, M., Memeo, M., Bicchi, A., Caldwell, D.G., Otaduy, M.A. Published in: Proc. of World Haptics Conference, 2015. Link to publication\n\n\n\n\n\nTowards Cloth-Manipulating Characters\n Author(s): Miguel, E., Feng, A., Xu, Y. and Shapiro, A. Published in: Short paper in Computer Animation and Social Agents 2014, Houston. Link to publication\n\n\n\n\n\nEfficient Simulation of Contact Between Rigid and Deformable Objects\n Author(s): Miguel, E. and Otaduy, M.A. Published in: Proc. of Multibody Dynamics, Brussels, July 2011. Link to publication\n\n\n\n\n\nModeling and Simulation of a Human Shoulder for Interactive Medical Applications\n Author(s): Otaduy, M.A., Garre, C., Gascon, J., Miguel, E., Perez, A.G., Zurdo, J.S. Published in: Proc. of CEIG (Spanish Computer Graphics Conference), September 2010. Link to publication"
+  },
+  {
     "objectID": "notes/ssh_config_file.html",
     "href": "notes/ssh_config_file.html",
     "title": "SSH configuration file",
@@ -28,60 +49,39 @@
     "text": "Resources\n\nUseful summary of SSH config file format and options.\nStackoverflow thread on the interaction between /etc/hosts and ~/.ssh/config."
   },
   {
-    "objectID": "notes/running_jupyter_on_remote_server.html",
-    "href": "notes/running_jupyter_on_remote_server.html",
-    "title": "Running Jupyter from a remote server",
+    "objectID": "notes/setup_jupyter_on_conda_environments.html",
+    "href": "notes/setup_jupyter_on_conda_environments.html",
+    "title": "Setup Jupyterlab on conda environments",
     "section": "",
-    "text": "SSH into the remote server and run Jupyter:\nssh [user@remote]\njupyter lab --no-browser --port=[port_in_remote]\nNote that the output of the last command should include a token. We will need it when accessing the remote server from the local machine (next step).\nOn the local machine, create an SSH tunnel to forward the remote port to your local machine:\nssh -NfL localhost:[port_in_local]:localhost:[port_in_remote] [user@remote]\nFinally, on your local browser, access http://localhost:[port_in_local]. The token produced in step one may be necessary to access the Jupyter server."
+    "text": "In the base environment:\nconda install pip ipympl jupyterlab nb_conda_kernels jupyter_contrib_nbextensions jupyterlab_widgets\nThen, for each virtual environment that should be available in Jupyter:\nconda create -n [env_name] python==[required python version] pip\nconda activate [env_name]\nconda install ipykernel ipympl ipywidgets"
   },
   {
-    "objectID": "notes/running_jupyter_on_remote_server.html#tldr",
-    "href": "notes/running_jupyter_on_remote_server.html#tldr",
-    "title": "Running Jupyter from a remote server",
+    "objectID": "notes/setup_jupyter_on_conda_environments.html#tldr",
+    "href": "notes/setup_jupyter_on_conda_environments.html#tldr",
+    "title": "Setup Jupyterlab on conda environments",
     "section": "",
-    "text": "SSH into the remote server and run Jupyter:\nssh [user@remote]\njupyter lab --no-browser --port=[port_in_remote]\nNote that the output of the last command should include a token. We will need it when accessing the remote server from the local machine (next step).\nOn the local machine, create an SSH tunnel to forward the remote port to your local machine:\nssh -NfL localhost:[port_in_local]:localhost:[port_in_remote] [user@remote]\nFinally, on your local browser, access http://localhost:[port_in_local]. The token produced in step one may be necessary to access the Jupyter server."
+    "text": "In the base environment:\nconda install pip ipympl jupyterlab nb_conda_kernels jupyter_contrib_nbextensions jupyterlab_widgets\nThen, for each virtual environment that should be available in Jupyter:\nconda create -n [env_name] python==[required python version] pip\nconda activate [env_name]\nconda install ipykernel ipympl ipywidgets"
   },
   {
-    "objectID": "notes/running_jupyter_on_remote_server.html#breakdown",
-    "href": "notes/running_jupyter_on_remote_server.html#breakdown",
-    "title": "Running Jupyter from a remote server",
+    "objectID": "notes/setup_jupyter_on_conda_environments.html#breakdown",
+    "href": "notes/setup_jupyter_on_conda_environments.html#breakdown",
+    "title": "Setup Jupyterlab on conda environments",
     "section": "Breakdown",
-    "text": "Breakdown\n\nWe run Jupyter in the remote machine using --no-browser so that no browser is opened in the remote machine.\nAny available port can be specified to avoid port collisions.\nThe -Nf options for the SSH tunnel run the SSH session in the background (-f) without executing remote commands (-N).\nThe item localhost:[port_in_local]:localhost:[port_in_remote] can be split in two parts. The first localhost:[port_in_local] specifies the local address (the address on the local machine where the port is being opened), in this case localhost, indicating that only the local machine can access that port, and the local port, [port_in_local], where the tunnel will listen. The second localhost:[port_in_remote] indicates the address on the remote machine to connect to, here localhost, meaning that SSH will connect to a service running on the local machine, and [port_in_remote], which specifies the port in the remote machine to which the tunnel connects.\nIn order to access the remote Jupyter server, we access the local port of the SSH tunnel via http://localhost:[port_in_local]."
+    "text": "Breakdown\n\nAs an alternative, one could install a separate Jupyter instance on each virtual environment. In my experience it is tedious and error prone. For me the approach above works best.\nThe nb_conda_kernels extension enables access to individual virtual environments from the Jupyter instance installed in the base environent.\nAdding ipykernel allows the virtual environment to be accessible by Jupyter.\nJupyter is always started in the base environment. Then, each individual notebook will use one of the installed environments.\nI also install additional packages such as jupyter_contrib_extensions and jupyterlab_widgets, which I use in most of my projects."
   },
   {
-    "objectID": "notes/running_jupyter_on_remote_server.html#resources",
-    "href": "notes/running_jupyter_on_remote_server.html#resources",
-    "title": "Running Jupyter from a remote server",
+    "objectID": "notes/setup_jupyter_on_conda_environments.html#resources",
+    "href": "notes/setup_jupyter_on_conda_environments.html#resources",
+    "title": "Setup Jupyterlab on conda environments",
     "section": "Resources",
-    "text": "Resources\n\nStackoverflow\nFound in Hamel’s blog\nSimilar instructions found in Willem’s Fizzy Logic\nA more advanced approach using HTTPS by Davis Busteed"
+    "text": "Resources\n\nnb_conda_kernels here\nipykernel here\nPost where I found out about this approach first"
   },
   {
-    "objectID": "notes/get_jupyter_server_token.html",
-    "href": "notes/get_jupyter_server_token.html",
-    "title": "Show the token of a Jupyter server",
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "Personal Notes",
     "section": "",
-    "text": "SSH into the remote server and run:\njupyter server list\nThis will show the list of running Jupyter servers together with the token.\nNote that it is possible to create a configuration file for Jupyter, which may overwrite certain options, e.g. specify a password instead of a token, in which case no token would be listed by the command above."
-  },
-  {
-    "objectID": "notes/get_jupyter_server_token.html#tldr",
-    "href": "notes/get_jupyter_server_token.html#tldr",
-    "title": "Show the token of a Jupyter server",
-    "section": "",
-    "text": "SSH into the remote server and run:\njupyter server list\nThis will show the list of running Jupyter servers together with the token.\nNote that it is possible to create a configuration file for Jupyter, which may overwrite certain options, e.g. specify a password instead of a token, in which case no token would be listed by the command above."
-  },
-  {
-    "objectID": "notes/get_jupyter_server_token.html#breakdown",
-    "href": "notes/get_jupyter_server_token.html#breakdown",
-    "title": "Show the token of a Jupyter server",
-    "section": "Breakdown",
-    "text": "Breakdown\n\njupyter can be run as a system command, followed by the specific subcommand and options.\nUse jupyter --help to obtain a detailed list of options. At the time of writing this the available subcommands are listed at the bottom of the help as Available subcommands: .....\nThe token obtained here is often requested when connecting remotely to the Jupyter server, as explained in this note."
-  },
-  {
-    "objectID": "notes/get_jupyter_server_token.html#resources",
-    "href": "notes/get_jupyter_server_token.html#resources",
-    "title": "Show the token of a Jupyter server",
-    "section": "Resources",
-    "text": "Resources\n\nOfficial Jupyter docs"
+    "text": "Personal Notes\nThese are some notes, procedures or code snippets I find useful myself and tend to use relatively often.\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nRunning Jupyter from a remote server\n\n\nHow to run Jupyter on a remote server and access…\n\n\n\n\nSSH configuration file\n\n\nHow to configure a remote host in the SSH config…\n\n\n\n\nSSH configuration for Git repository\n\n\nHow to configure SSH access to Git repository\n\n\n\n\nSetup Jupyterlab on conda environments\n\n\nMy template to setup Jupyterlab and conda…\n\n\n\n\nShow the token of a Jupyter server\n\n\nHow to obtain the token of a running Jupyter…\n\n\n\n\nSpecify GPU device\n\n\nHow to specify GPU device\n\n\n\n\nTensorboard on a remote server\n\n\nHow to run Tensorboard on a remote server and…\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes/tensorboard_on_remote_server.html",
@@ -119,62 +119,6 @@
     "text": "No matching items"
   },
   {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
-    "section": "",
-    "text": "Author(s): Velicky, P., Miguel, E., Michalska, J.M. et al. Published in: Nat. Methods 20, 1256–1265 (2023). Link to publication\n\n\n\n\n\n\n Author(s): Casafranca, J. J., Cirio, G., Rodriguez, A., Miguel, E., Otaduy, M. A. Published in: Computer Graphics Forum Vol. 39(2). Link to publication\n\n\n\n\n\n\n Author(s): Malomo, L., Perez, J., Iarussi, E., Pietroni, N., Miguel, E., Cignoni, P., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 37(6) (SIGGRAPH Asia 2018). Link to publication\n\n\n\n\n\n\n Author(s): Guseinov R., Miguel E., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 36(4) (SIGGRAPH 2017). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Lepoutre, M., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 35(4) (SIGGRAPH 2016). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Miraut, D., Otaduy, M.A. Published in: Computer Graphics Forum (Proc. of Eurographics), Volume 35, Number 2, 2016. Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Tamstorf, R., Bradley, D., Schvartzman, S.C., Thomaszewsky, B., Bickel, B., Matusik, W., Marschner, S., Otaduy, M.A. Published in: ACM Transactions on Graphics, Vol. 32 (SIGGRAPH Asia 2013). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Bradley, D.,Thomaszewsky, B., Bickel, B., Matusik, W., Otaduy, M.A., Marschner, S. Published in: Computer Graphics Forum, Vol. 31 (2) (Proc. of Eurographics 2012). Link to publication"
-  },
-  {
-    "objectID": "publications.html#journal-publications",
-    "href": "publications.html#journal-publications",
-    "title": "Publications",
-    "section": "",
-    "text": "Author(s): Velicky, P., Miguel, E., Michalska, J.M. et al. Published in: Nat. Methods 20, 1256–1265 (2023). Link to publication\n\n\n\n\n\n\n Author(s): Casafranca, J. J., Cirio, G., Rodriguez, A., Miguel, E., Otaduy, M. A. Published in: Computer Graphics Forum Vol. 39(2). Link to publication\n\n\n\n\n\n\n Author(s): Malomo, L., Perez, J., Iarussi, E., Pietroni, N., Miguel, E., Cignoni, P., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 37(6) (SIGGRAPH Asia 2018). Link to publication\n\n\n\n\n\n\n Author(s): Guseinov R., Miguel E., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 36(4) (SIGGRAPH 2017). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Lepoutre, M., Bickel, B. Published in: ACM Transactions on Graphics, Vol. 35(4) (SIGGRAPH 2016). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Miraut, D., Otaduy, M.A. Published in: Computer Graphics Forum (Proc. of Eurographics), Volume 35, Number 2, 2016. Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Tamstorf, R., Bradley, D., Schvartzman, S.C., Thomaszewsky, B., Bickel, B., Matusik, W., Marschner, S., Otaduy, M.A. Published in: ACM Transactions on Graphics, Vol. 32 (SIGGRAPH Asia 2013). Link to publication\n\n\n\n\n\n\n Author(s): Miguel, E., Bradley, D.,Thomaszewsky, B., Bickel, B., Matusik, W., Otaduy, M.A., Marschner, S. Published in: Computer Graphics Forum, Vol. 31 (2) (Proc. of Eurographics 2012). Link to publication"
-  },
-  {
-    "objectID": "publications.html#conference-publications",
-    "href": "publications.html#conference-publications",
-    "title": "Publications",
-    "section": "Conference Publications",
-    "text": "Conference Publications\n\nEfficient FEM-based simulation of soft robots modeled as kinematic chains\n Author(s): Pozzi, M., Miguel, E., Deimel, R., Malvezzi, M., Bickel, B., Brock, O., Prattichizzo, D. Published in: IEEE International Conference on Robotics and Automation 2018. Link to publication\n\n\n\n\n\nCharacterization of Nonlinear Finger Pad Mechanics for Tactile Rendering\n Author(s): Miguel, E., DAngelo, M.L., Cannella, F., Bianchi, M., Memeo, M., Bicchi, A., Caldwell, D.G., Otaduy, M.A. Published in: Proc. of World Haptics Conference, 2015. Link to publication\n\n\n\n\n\nTowards Cloth-Manipulating Characters\n Author(s): Miguel, E., Feng, A., Xu, Y. and Shapiro, A. Published in: Short paper in Computer Animation and Social Agents 2014, Houston. Link to publication\n\n\n\n\n\nEfficient Simulation of Contact Between Rigid and Deformable Objects\n Author(s): Miguel, E. and Otaduy, M.A. Published in: Proc. of Multibody Dynamics, Brussels, July 2011. Link to publication\n\n\n\n\n\nModeling and Simulation of a Human Shoulder for Interactive Medical Applications\n Author(s): Otaduy, M.A., Garre, C., Gascon, J., Miguel, E., Perez, A.G., Zurdo, J.S. Published in: Proc. of CEIG (Spanish Computer Graphics Conference), September 2010. Link to publication"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About Me",
-    "section": "",
-    "text": "About Me\nHi, I’m Eder Miguel.\nI enjoy exploring computational solutions to practical problems and am always looking for opportunities to learn something new. I currently work as a Research Software Engineer at IST Austria, where I focus on developing tools for super-resolution light microscopy. This includes tasks like image and volume segmentation, stitching large microscopy datasets, and analyzing data to help biologists and neuroscientists make sense of their results.\nBefore this, I worked on physics-based simulations, particularly data-driven methods for fabric mechanics and computational design tools. Along the way, I’ve also explored topics like soft robotics, neural rendering, contact simulation, and real-time hand interaction simulations.\nI obtained my PhD in Computer Graphics in 2014. Afterwards, I was a postdoctoral researcher at IST Austria and in 2017, I co-founded Desilico Labs (now Seddi), a startup focused on fabric simulation and digitalization. In 2020, I returned to IST Austria, as a research engineer. During my time here, I took a brief break to work at Meta Zurich for a few months, before returning to my current role.\nOutside of work, I like to experiment with new ideas and side projects. This blog is a place to share some of that exploration, or simply things I find interesting.\n\n\nWhy This Blog?\nStarting this blog has been on my mind for years, but for one reason or another, it kept getting postponed.\nNow feels like the right time.\nMy goal is to share posts —whether long or short— about experiments, projects, useful resources, or ideas I find worth documenting and sharing.\n\nThanks for visiting!"
-  },
-  {
-    "objectID": "notes/setup_jupyter_on_conda_environments.html",
-    "href": "notes/setup_jupyter_on_conda_environments.html",
-    "title": "Setup Jupyterlab on conda environments",
-    "section": "",
-    "text": "In the base environment:\nconda install pip ipympl jupyterlab nb_conda_kernels jupyter_contrib_nbextensions jupyterlab_widgets\nThen, for each virtual environment that should be available in Jupyter:\nconda create -n [env_name] python==[required python version] pip\nconda activate [env_name]\nconda install ipykernel ipympl ipywidgets"
-  },
-  {
-    "objectID": "notes/setup_jupyter_on_conda_environments.html#tldr",
-    "href": "notes/setup_jupyter_on_conda_environments.html#tldr",
-    "title": "Setup Jupyterlab on conda environments",
-    "section": "",
-    "text": "In the base environment:\nconda install pip ipympl jupyterlab nb_conda_kernels jupyter_contrib_nbextensions jupyterlab_widgets\nThen, for each virtual environment that should be available in Jupyter:\nconda create -n [env_name] python==[required python version] pip\nconda activate [env_name]\nconda install ipykernel ipympl ipywidgets"
-  },
-  {
-    "objectID": "notes/setup_jupyter_on_conda_environments.html#breakdown",
-    "href": "notes/setup_jupyter_on_conda_environments.html#breakdown",
-    "title": "Setup Jupyterlab on conda environments",
-    "section": "Breakdown",
-    "text": "Breakdown\n\nAs an alternative, one could install a separate Jupyter instance on each virtual environment. In my experience it is tedious and error prone. For me the approach above works best.\nThe nb_conda_kernels extension enables access to individual virtual environments from the Jupyter instance installed in the base environent.\nAdding ipykernel allows the virtual environment to be accessible by Jupyter.\nJupyter is always started in the base environment. Then, each individual notebook will use one of the installed environments.\nI also install additional packages such as jupyter_contrib_extensions and jupyterlab_widgets, which I use in most of my projects."
-  },
-  {
-    "objectID": "notes/setup_jupyter_on_conda_environments.html#resources",
-    "href": "notes/setup_jupyter_on_conda_environments.html#resources",
-    "title": "Setup Jupyterlab on conda environments",
-    "section": "Resources",
-    "text": "Resources\n\nnb_conda_kernels here\nipykernel here\nPost where I found out about this approach first"
-  },
-  {
     "objectID": "notes/ssh_keygen_and_config_for_git.html",
     "href": "notes/ssh_keygen_and_config_for_git.html",
     "title": "SSH configuration for Git repository",
@@ -203,10 +147,94 @@
     "text": "Resources\n\nOfficial Github documentation.\nStackoverflow post on how to configure SSH when working with several accounts."
   },
   {
-    "objectID": "notes/index.html",
-    "href": "notes/index.html",
-    "title": "Personal Notes",
+    "objectID": "notes/set_cuda_gpu_device.html",
+    "href": "notes/set_cuda_gpu_device.html",
+    "title": "Specify GPU device",
     "section": "",
-    "text": "Personal Notes\nThese are some notes, procedures or code snippets I find useful myself and tend to use relatively often.\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nRunning Jupyter from a remote server\n\n\nHow to run Jupyter on a remote server and access…\n\n\n\n\nSSH configuration file\n\n\nHow to configure a remote host in the SSH config…\n\n\n\n\nSSH configuration for Git repository\n\n\nHow to configure SSH access to Git repository\n\n\n\n\nSetup Jupyterlab on conda environments\n\n\nMy template to setup Jupyterlab and conda…\n\n\n\n\nShow the token of a Jupyter server\n\n\nHow to obtain the token of a running Jupyter…\n\n\n\n\nTensorboard on a remote server\n\n\nHow to run Tensorboard on a remote server and…\n\n\n\n\n\nNo matching items"
+    "text": "A generic solution to specify the GPU device(s) to use is to set the CUDA_VISIBLE_DEVICES environment variable. When running from terminal:\nCUDA_VISIBLE_DEVICES=0,1 [executable] [params]\nWhen running inside a Jupyter notebook, use the following snippet. To avoid potential conflicts, use this before any CUDA/GPU-related modules are imported:\nimport os\nos.environ[\"CUDA_VISIBLE_DEVICES\"] = \"0,1\""
+  },
+  {
+    "objectID": "notes/set_cuda_gpu_device.html#tldr",
+    "href": "notes/set_cuda_gpu_device.html#tldr",
+    "title": "Specify GPU device",
+    "section": "",
+    "text": "A generic solution to specify the GPU device(s) to use is to set the CUDA_VISIBLE_DEVICES environment variable. When running from terminal:\nCUDA_VISIBLE_DEVICES=0,1 [executable] [params]\nWhen running inside a Jupyter notebook, use the following snippet. To avoid potential conflicts, use this before any CUDA/GPU-related modules are imported:\nimport os\nos.environ[\"CUDA_VISIBLE_DEVICES\"] = \"0,1\""
+  },
+  {
+    "objectID": "notes/set_cuda_gpu_device.html#breakdown",
+    "href": "notes/set_cuda_gpu_device.html#breakdown",
+    "title": "Specify GPU device",
+    "section": "Breakdown",
+    "text": "Breakdown\n\nUsing CUDA_VISIBLE_DEVICES will restrict the devices visible to the executed program. Internally, CUDA device IDs will be remmaped, i.e. cuda:0 will be mapped to the first visible device, which could could be the second one if CUDA_VISIBLE_DEVICES=1.\nCUDA_DEVICE_ORDER=PCI_BUS_ID or os.environ[\"CUDA_DEVICE_ORDER\"] = \"PCI_BUS_ID\" ensures that devices are always listed according to their PCI bus ID, avoiding potential non-determinism when listing GPU devices."
+  },
+  {
+    "objectID": "notes/set_cuda_gpu_device.html#resources",
+    "href": "notes/set_cuda_gpu_device.html#resources",
+    "title": "Specify GPU device",
+    "section": "Resources",
+    "text": "Resources\n\nPost in NVIDIA technical blog.\nStackoverflow thread specifically for Jupyter notebooks. Uses the CUDA_DEVICE_ORDER environment variable.\nPytorch documentation on torch.cuda.set_device() method (which also indicates using CUDA_VISIBLE_DEVICES is usually a better option)."
+  },
+  {
+    "objectID": "notes/get_jupyter_server_token.html",
+    "href": "notes/get_jupyter_server_token.html",
+    "title": "Show the token of a Jupyter server",
+    "section": "",
+    "text": "SSH into the remote server and run:\njupyter server list\nThis will show the list of running Jupyter servers together with the token.\nNote that it is possible to create a configuration file for Jupyter, which may overwrite certain options, e.g. specify a password instead of a token, in which case no token would be listed by the command above."
+  },
+  {
+    "objectID": "notes/get_jupyter_server_token.html#tldr",
+    "href": "notes/get_jupyter_server_token.html#tldr",
+    "title": "Show the token of a Jupyter server",
+    "section": "",
+    "text": "SSH into the remote server and run:\njupyter server list\nThis will show the list of running Jupyter servers together with the token.\nNote that it is possible to create a configuration file for Jupyter, which may overwrite certain options, e.g. specify a password instead of a token, in which case no token would be listed by the command above."
+  },
+  {
+    "objectID": "notes/get_jupyter_server_token.html#breakdown",
+    "href": "notes/get_jupyter_server_token.html#breakdown",
+    "title": "Show the token of a Jupyter server",
+    "section": "Breakdown",
+    "text": "Breakdown\n\njupyter can be run as a system command, followed by the specific subcommand and options.\nUse jupyter --help to obtain a detailed list of options. At the time of writing this the available subcommands are listed at the bottom of the help as Available subcommands: .....\nThe token obtained here is often requested when connecting remotely to the Jupyter server, as explained in this note."
+  },
+  {
+    "objectID": "notes/get_jupyter_server_token.html#resources",
+    "href": "notes/get_jupyter_server_token.html#resources",
+    "title": "Show the token of a Jupyter server",
+    "section": "Resources",
+    "text": "Resources\n\nOfficial Jupyter docs"
+  },
+  {
+    "objectID": "notes/running_jupyter_on_remote_server.html",
+    "href": "notes/running_jupyter_on_remote_server.html",
+    "title": "Running Jupyter from a remote server",
+    "section": "",
+    "text": "SSH into the remote server and run Jupyter:\nssh [user@remote]\njupyter lab --no-browser --port=[port_in_remote]\nNote that the output of the last command should include a token. We will need it when accessing the remote server from the local machine (next step).\nOn the local machine, create an SSH tunnel to forward the remote port to your local machine:\nssh -NfL localhost:[port_in_local]:localhost:[port_in_remote] [user@remote]\nFinally, on your local browser, access http://localhost:[port_in_local]. The token produced in step one may be necessary to access the Jupyter server."
+  },
+  {
+    "objectID": "notes/running_jupyter_on_remote_server.html#tldr",
+    "href": "notes/running_jupyter_on_remote_server.html#tldr",
+    "title": "Running Jupyter from a remote server",
+    "section": "",
+    "text": "SSH into the remote server and run Jupyter:\nssh [user@remote]\njupyter lab --no-browser --port=[port_in_remote]\nNote that the output of the last command should include a token. We will need it when accessing the remote server from the local machine (next step).\nOn the local machine, create an SSH tunnel to forward the remote port to your local machine:\nssh -NfL localhost:[port_in_local]:localhost:[port_in_remote] [user@remote]\nFinally, on your local browser, access http://localhost:[port_in_local]. The token produced in step one may be necessary to access the Jupyter server."
+  },
+  {
+    "objectID": "notes/running_jupyter_on_remote_server.html#breakdown",
+    "href": "notes/running_jupyter_on_remote_server.html#breakdown",
+    "title": "Running Jupyter from a remote server",
+    "section": "Breakdown",
+    "text": "Breakdown\n\nWe run Jupyter in the remote machine using --no-browser so that no browser is opened in the remote machine.\nAny available port can be specified to avoid port collisions.\nThe -Nf options for the SSH tunnel run the SSH session in the background (-f) without executing remote commands (-N).\nThe item localhost:[port_in_local]:localhost:[port_in_remote] can be split in two parts. The first localhost:[port_in_local] specifies the local address (the address on the local machine where the port is being opened), in this case localhost, indicating that only the local machine can access that port, and the local port, [port_in_local], where the tunnel will listen. The second localhost:[port_in_remote] indicates the address on the remote machine to connect to, here localhost, meaning that SSH will connect to a service running on the local machine, and [port_in_remote], which specifies the port in the remote machine to which the tunnel connects.\nIn order to access the remote Jupyter server, we access the local port of the SSH tunnel via http://localhost:[port_in_local]."
+  },
+  {
+    "objectID": "notes/running_jupyter_on_remote_server.html#resources",
+    "href": "notes/running_jupyter_on_remote_server.html#resources",
+    "title": "Running Jupyter from a remote server",
+    "section": "Resources",
+    "text": "Resources\n\nStackoverflow\nFound in Hamel’s blog\nSimilar instructions found in Willem’s Fizzy Logic\nA more advanced approach using HTTPS by Davis Busteed"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About Me",
+    "section": "",
+    "text": "About Me\nHi, I’m Eder Miguel.\nI enjoy exploring computational solutions to practical problems and am always looking for opportunities to learn something new. I currently work as a Research Software Engineer at IST Austria, where I focus on developing tools for super-resolution light microscopy. This includes tasks like image and volume segmentation, stitching large microscopy datasets, and analyzing data to help biologists and neuroscientists make sense of their results.\nBefore this, I worked on physics-based simulations, particularly data-driven methods for fabric mechanics and computational design tools. Along the way, I’ve also explored topics like soft robotics, neural rendering, contact simulation, and real-time hand interaction simulations.\nI obtained my PhD in Computer Graphics in 2014. Afterwards, I was a postdoctoral researcher at IST Austria and in 2017, I co-founded Desilico Labs (now Seddi), a startup focused on fabric simulation and digitalization. In 2020, I returned to IST Austria, as a research engineer. During my time here, I took a brief break to work at Meta Zurich for a few months, before returning to my current role.\nOutside of work, I like to experiment with new ideas and side projects. This blog is a place to share some of that exploration, or simply things I find interesting.\n\n\nWhy This Blog?\nStarting this blog has been on my mind for years, but for one reason or another, it kept getting postponed.\nNow feels like the right time.\nMy goal is to share posts —whether long or short— about experiments, projects, useful resources, or ideas I find worth documenting and sharing.\n\nThanks for visiting!"
   }
 ]
