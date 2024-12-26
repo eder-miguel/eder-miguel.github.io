@@ -1,7 +1,12 @@
 [
   {
+    "listing": "/posts/index.html",
+    "items": []
+  },
+  {
     "listing": "/notes/index.html",
     "items": [
+      "/notes/pytorch_gpu_memory_in_jupyter.html",
       "/notes/running_jupyter_on_remote_server.html",
       "/notes/ssh_config_file.html",
       "/notes/ssh_keygen_and_config_for_git.html",
@@ -10,9 +15,5 @@
       "/notes/set_cuda_gpu_device.html",
       "/notes/tensorboard_on_remote_server.html"
     ]
-  },
-  {
-    "listing": "/posts/index.html",
-    "items": []
   }
 ]
