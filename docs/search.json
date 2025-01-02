@@ -109,7 +109,7 @@
     "href": "notes/index.html",
     "title": "Personal Notes",
     "section": "",
-    "text": "Personal Notes\nThese are some notes, procedures or code snippets I find useful myself and tend to use relatively often.\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nDisk space and usage in Linux\n\n\nUsing du and df commands to collect disk…\n\n\n\n\nPytorch GPU memory management in Jupyter\n\n\nLessons learned about managing GPU memory when…\n\n\n\n\nRunning Jupyter from a remote server\n\n\nHow to run Jupyter on a remote server and access…\n\n\n\n\nSSH configuration file\n\n\nHow to configure a remote host in the SSH config…\n\n\n\n\nSSH configuration for Git repository\n\n\nHow to configure SSH access to Git repository\n\n\n\n\nSetup Jupyterlab on conda environments\n\n\nMy template to setup Jupyterlab and conda…\n\n\n\n\nShow the token of a Jupyter server\n\n\nHow to obtain the token of a running Jupyter…\n\n\n\n\nSpecify GPU device\n\n\nHow to specify GPU device\n\n\n\n\nTensorboard on a remote server\n\n\nHow to run Tensorboard on a remote server and…\n\n\n\n\n\nNo matching items"
+    "text": "Personal Notes\nThese are some notes, procedures or code snippets I find useful myself and tend to use relatively often.\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nDisk space and usage in Linux\n\n\nUsing du and df commands to collect disk…\n\n\n\n\nPytorch GPU memory management in Jupyter\n\n\nLessons learned about managing GPU memory when…\n\n\n\n\nRunning Jupyter from a remote server\n\n\nHow to run Jupyter on a remote server and access…\n\n\n\n\nSLURM basic commands\n\n\nSome basic commands to run jobs in SLURM\n\n\n\n\nSSH configuration file\n\n\nHow to configure a remote host in the SSH config…\n\n\n\n\nSSH configuration for Git repository\n\n\nHow to configure SSH access to Git repository\n\n\n\n\nSetup Jupyterlab on conda environments\n\n\nMy template to setup Jupyterlab and conda…\n\n\n\n\nShow the token of a Jupyter server\n\n\nHow to obtain the token of a running Jupyter…\n\n\n\n\nSpecify GPU device\n\n\nHow to specify GPU device\n\n\n\n\nTensorboard on a remote server\n\n\nHow to run Tensorboard on a remote server and…\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes/tensorboard_on_remote_server.html",
@@ -140,13 +140,6 @@
     "text": "Resources\n\nStackoverflow thread with this instructions and some additional ideas and references."
   },
   {
-    "objectID": "posts/index.html",
-    "href": "posts/index.html",
-    "title": "Posts",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
     "objectID": "notes/ssh_keygen_and_config_for_git.html",
     "href": "notes/ssh_keygen_and_config_for_git.html",
     "title": "SSH configuration for Git repository",
@@ -173,6 +166,34 @@
     "title": "SSH configuration for Git repository",
     "section": "Resources",
     "text": "Resources\n\nOfficial Github documentation.\nStackoverflow post on how to configure SSH when working with several accounts."
+  },
+  {
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "notes/slurm_basic_commands.html",
+    "href": "notes/slurm_basic_commands.html",
+    "title": "SLURM basic commands",
+    "section": "",
+    "text": "Write the following SLURM directives and code in a file, e.g. job script.sh:\n#!/bin/bash\n\n#SBATCH --mail-type=ALL                # Type of events triggering email\n#SBATCH --mail-user=[email_address]    # Email address for notifications\n#SBATCH --job-name=[name_for_job]      # Job name\n#SBATCH --time=50:00:00                # Max. runtime, 50 hours in this case\n#SBATCH --mem=128G                     # Define amout of RAM, 128 gigabytes here\n#SBATCH --partition=[partition_name]   # Partition to use\n#SBATCH --gres=gpu:1                   # Generic resource specification, here a node with 1 GPU\n#SBATCH --constraint=A10               # Additional constraint: only nodes with A10 feature are valid\n#SBATCH --no-requeue                   # Do not requeue job if failed\n\n\n## Bash code to execute\nscript=\"$HOME/script.py\" # A script to be run\ndata_path=\"$HOME/some_data.txt\" # Input data\nout_path=\"$PWD\" # Path for output\n\n## Execute\nsrun /usr/bin/nvidia-smi # E.g. to validate that the node has the required GPU\nsrun python -c 'import torch; print(torch.cuda.is_available())' # To validate that Pytorch is correctly detected\nsrun python $script $data_path $out_path\nNote that lines starting with #SBATCH are SLURM directives that will be interpreted by SLRUM.\nThen, run it with the sbatch SLURM command:\nsbatch script.sh\n\n\n\nThe SLURM command to list running jobs and their status is squeue. In practice there are too many jobs and some filtering must be applied, often user-based. This can be done using standard grep with the username of interest:\nsqueue | grep [username]\nor using the specific options of squeue:\nsqueue --u [username] # or `whoami` instead of [username]\nFor more information go here.\n\n\n\nAfter running a job with sbatch SLURM will output the job ID of the running job. To cancel the job use scancel:\nscancel [jobID]\n\n\n\nDifferent jobs may have different requirements in terms of memory, cores, GPUs… In the job script we have to specify these requirements as generic resources (via --gres) or constraints (via --constraints). To list the available generic resources and features (used to specify constraints) we use sinfo:\nsinfo -o '%25N %5c %10m %40f %G'\nwhere\n\n-o is the option to specify the output format\n'%25N %5c %10m %40f %G' is the format specification:\n\nnumber after % indicates the max. length for that field\n%N to show node names\n%c to show number of cores\n%m to show available RAM memory\n%f to show available features (which can be specified in the --constraints option of a job script)\n%G to show available generic resources (used in the --gres option of a job script)\n\n\nsinfo provides lots of information about the cluster. For more information and options go here."
+  },
+  {
+    "objectID": "notes/slurm_basic_commands.html#tldr",
+    "href": "notes/slurm_basic_commands.html#tldr",
+    "title": "SLURM basic commands",
+    "section": "",
+    "text": "Write the following SLURM directives and code in a file, e.g. job script.sh:\n#!/bin/bash\n\n#SBATCH --mail-type=ALL                # Type of events triggering email\n#SBATCH --mail-user=[email_address]    # Email address for notifications\n#SBATCH --job-name=[name_for_job]      # Job name\n#SBATCH --time=50:00:00                # Max. runtime, 50 hours in this case\n#SBATCH --mem=128G                     # Define amout of RAM, 128 gigabytes here\n#SBATCH --partition=[partition_name]   # Partition to use\n#SBATCH --gres=gpu:1                   # Generic resource specification, here a node with 1 GPU\n#SBATCH --constraint=A10               # Additional constraint: only nodes with A10 feature are valid\n#SBATCH --no-requeue                   # Do not requeue job if failed\n\n\n## Bash code to execute\nscript=\"$HOME/script.py\" # A script to be run\ndata_path=\"$HOME/some_data.txt\" # Input data\nout_path=\"$PWD\" # Path for output\n\n## Execute\nsrun /usr/bin/nvidia-smi # E.g. to validate that the node has the required GPU\nsrun python -c 'import torch; print(torch.cuda.is_available())' # To validate that Pytorch is correctly detected\nsrun python $script $data_path $out_path\nNote that lines starting with #SBATCH are SLURM directives that will be interpreted by SLRUM.\nThen, run it with the sbatch SLURM command:\nsbatch script.sh\n\n\n\nThe SLURM command to list running jobs and their status is squeue. In practice there are too many jobs and some filtering must be applied, often user-based. This can be done using standard grep with the username of interest:\nsqueue | grep [username]\nor using the specific options of squeue:\nsqueue --u [username] # or `whoami` instead of [username]\nFor more information go here.\n\n\n\nAfter running a job with sbatch SLURM will output the job ID of the running job. To cancel the job use scancel:\nscancel [jobID]\n\n\n\nDifferent jobs may have different requirements in terms of memory, cores, GPUs… In the job script we have to specify these requirements as generic resources (via --gres) or constraints (via --constraints). To list the available generic resources and features (used to specify constraints) we use sinfo:\nsinfo -o '%25N %5c %10m %40f %G'\nwhere\n\n-o is the option to specify the output format\n'%25N %5c %10m %40f %G' is the format specification:\n\nnumber after % indicates the max. length for that field\n%N to show node names\n%c to show number of cores\n%m to show available RAM memory\n%f to show available features (which can be specified in the --constraints option of a job script)\n%G to show available generic resources (used in the --gres option of a job script)\n\n\nsinfo provides lots of information about the cluster. For more information and options go here."
+  },
+  {
+    "objectID": "notes/slurm_basic_commands.html#resources",
+    "href": "notes/slurm_basic_commands.html#resources",
+    "title": "SLURM basic commands",
+    "section": "Resources",
+    "text": "Resources\n\nOfficial SLURM documentation"
   },
   {
     "objectID": "notes/set_cuda_gpu_device.html",
