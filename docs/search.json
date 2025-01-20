@@ -256,14 +256,14 @@
     "href": "notes/pytorch_gpu_memory_in_jupyter.html",
     "title": "Pytorch GPU memory management in Jupyter",
     "section": "",
-    "text": "To clean-up cached memory in Pytorch:\ndel x\nwith torch.no_grad():\n    torch.cuda.empty_cache()\nNote that torch.cuda.empty_cache() simply frees cached memory. For this to be truly effective, we must carefully handle variables and contexts, like we do in the previous example deleting variable x."
+    "text": "To clean-up cached memory in Pytorch:\ndel x\nwith torch.no_grad():\n    torch.cuda.empty_cache()\nNote that torch.cuda.empty_cache() simply frees cached memory. For this to be truly effective, we must carefully handle variables and contexts, like we do in the previous example deleting variable x.\nAlso, remember to the context manager when running the network in inference mode, e.g.:\nx, y = next(iter(dl))\nwith torch.no_grad():\n    pred = net(x)\nRunning the code above without the context manager may result in difficulties freeing up the GPU memory.\nTo check the global namespace in a Jupyter environment:\n%who\nwhich will return all variables living in the global namespace.\nA more advanced approach would involve checking the garbage collector for tracked variables and referrers:\nimport gc\nobjs_in_gpu = [obj for obj in gc.get_objects() if isinstance(obj, torch.Tensor) and obj.is_cuda]\nreferrers = gc.get_referrers(objs_in_gpu[0])"
   },
   {
     "objectID": "notes/pytorch_gpu_memory_in_jupyter.html#tldr",
     "href": "notes/pytorch_gpu_memory_in_jupyter.html#tldr",
     "title": "Pytorch GPU memory management in Jupyter",
     "section": "",
-    "text": "To clean-up cached memory in Pytorch:\ndel x\nwith torch.no_grad():\n    torch.cuda.empty_cache()\nNote that torch.cuda.empty_cache() simply frees cached memory. For this to be truly effective, we must carefully handle variables and contexts, like we do in the previous example deleting variable x."
+    "text": "To clean-up cached memory in Pytorch:\ndel x\nwith torch.no_grad():\n    torch.cuda.empty_cache()\nNote that torch.cuda.empty_cache() simply frees cached memory. For this to be truly effective, we must carefully handle variables and contexts, like we do in the previous example deleting variable x.\nAlso, remember to the context manager when running the network in inference mode, e.g.:\nx, y = next(iter(dl))\nwith torch.no_grad():\n    pred = net(x)\nRunning the code above without the context manager may result in difficulties freeing up the GPU memory.\nTo check the global namespace in a Jupyter environment:\n%who\nwhich will return all variables living in the global namespace.\nA more advanced approach would involve checking the garbage collector for tracked variables and referrers:\nimport gc\nobjs_in_gpu = [obj for obj in gc.get_objects() if isinstance(obj, torch.Tensor) and obj.is_cuda]\nreferrers = gc.get_referrers(objs_in_gpu[0])"
   },
   {
     "objectID": "notes/pytorch_gpu_memory_in_jupyter.html#breakdown",

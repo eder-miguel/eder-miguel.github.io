@@ -196,6 +196,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    torch.cuda.empty_cache()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that <code>torch.cuda.empty_cache()</code> simply frees cached memory. For this to be truly effective, we must carefully handle variables and contexts, like we do in the previous example deleting variable <code>x</code>.</p>
+<p>Also, remember to the context manager when running the network in inference mode, e.g.:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(dl))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    pred <span class="op">=</span> net(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Running the code above without the context manager may result in difficulties freeing up the GPU memory.</p>
+<p>To check the global namespace in a Jupyter environment:</p>
+<pre><code>%who</code></pre>
+<p>which will return all variables living in the global namespace.</p>
+<p>A more advanced approach would involve checking the garbage collector for tracked variables and referrers:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gc</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>objs_in_gpu <span class="op">=</span> [obj <span class="cf">for</span> obj <span class="kw">in</span> gc.get_objects() <span class="cf">if</span> <span class="bu">isinstance</span>(obj, torch.Tensor) <span class="kw">and</span> obj.is_cuda]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>referrers <span class="op">=</span> gc.get_referrers(objs_in_gpu[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="breakdown" class="level2">
 <h2 class="anchored" data-anchor-id="breakdown">Breakdown</h2>
@@ -204,16 +216,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>A common error is storing references to Pytorch-related variables attached to computation graphs (as described <a href="https://discuss.pytorch.org/t/memory-leak-from-unowned-inference/189575/2">here</a>). This will cause the computation graph to stay in memory and eventually trigger OOM errors or slow down processing due to inefficient memory management.</li>
 <li>A key pattern to avoid many of these errors is using context managers, which automatically handle reference counting and ensure that variables declared within the context are freed when the context is exited.</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.cuda.device(<span class="dv">0</span>):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.cuda.device(<span class="dv">0</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="4" type="1">
 <li>Functions and exception blocks (<code>try-except-finally</code>) also serve this purpose and it is often a good idea to combine them in functions that perform heavy processing tasks which might be interrupted. Interruptions, if not handled properly, may also interfere with the reference counting mechanism. The following is a useful snippet</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func(params):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Heavy processing here</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>: <span class="co"># Use specific exception if expected</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        torch.cuda.empty_cache() <span class="co"># Ensure cached memory is freed if exception triggers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func(params):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Heavy processing here</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>: <span class="co"># Use specific exception if expected</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        torch.cuda.empty_cache() <span class="co"># Ensure cached memory is freed if exception triggers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
