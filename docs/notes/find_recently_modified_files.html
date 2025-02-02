@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="How to search for recently modified files">
 
-<title>index – My blog</title>
+<title>Using find to search for recently modified files – My blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,65 +101,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -157,7 +132,7 @@ window.Quarto = {
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../notes/index.html" aria-current="page"> 
+    <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Notes</span></a>
   </li>  
 </ul>
@@ -176,115 +151,65 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#personal-notes" id="toc-personal-notes" class="nav-link active" data-scroll-target="#personal-notes">Personal Notes</a></li>
+  <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TL;DR</a></li>
+  <li><a href="#real-world-example" id="toc-real-world-example" class="nav-link" data-scroll-target="#real-world-example">Real-world example</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Using <code>find</code> to search for recently modified files</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">notes</div>
+    <div class="quarto-category">bash</div>
+    <div class="quarto-category">find</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    How to search for recently modified files
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="personal-notes" class="level1">
-<h1>Personal Notes</h1>
-<p>These are some notes, procedures or code snippets I find useful myself and tend to use relatively often.</p>
+</header>
 
+
+<section id="tldr" class="level2">
+<h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
+<p>We can search for recently modified files via CLI:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="pp">[</span><span class="ss">path</span><span class="pp">]</span> <span class="at">-mtime</span> <span class="at">-1</span> <span class="co"># Search for files modified 1 day or less ago</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="pp">[</span><span class="ss">path</span><span class="pp">]</span> <span class="at">-mmin</span> <span class="at">-60</span> <span class="co"># Search for files modified 60 minutes or less ago</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="real-world-example" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-example">Real-world example</h2>
+<p>While using a webservice built on top of docker, it was unclear where certain files were stored. After some time trying to find the exact location through the documentation I used this approach to create a file using the webservice and then looking for any files created within the last few minutes. It turned out to be the most efficient solution, so keep it in mind!</p>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.man7.org/linux/man-pages/man1/find.1.html">Official <code>find</code> man-page documentation</a>.</li>
+<li><a href="https://stackoverflow.com/questions/16085958/find-the-files-that-have-been-changed-in-last-24-hours">Stackoverflow thread</a> with an example.</li>
+</ul>
 
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-Description
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="bm90ZXMlMkNqdXB5dGVy" data-listing-file-modified-sort="1734466987084" data-listing-reading-time-sort="2" data-listing-word-count-sort="263" data-listing-title-sort="Running Jupyter from a remote server" data-listing-filename-sort="running_jupyter_on_remote_server.ipynb">
-<td>
-<a href="../notes/running_jupyter_on_remote_server.html" class="title listing-title">Running Jupyter from a remote server</a>
-</td>
-<td>
-<span class="listing-description">How to run Jupyter on a remote server and access…</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="bm90ZXMlMkNzc2g=" data-listing-file-modified-sort="1734975511804" data-listing-reading-time-sort="2" data-listing-word-count-sort="228" data-listing-title-sort="SSH configuration file" data-listing-filename-sort="ssh_config_file.ipynb">
-<td>
-<a href="../notes/ssh_config_file.html" class="title listing-title">SSH configuration file</a>
-</td>
-<td>
-<span class="listing-description">How to configure a remote host in the SSH config…</span>
-</td>
-</tr>
-<tr data-index="2" data-categories="bm90ZXMlMkNnaXQlMkNzc2g=" data-listing-file-modified-sort="1734973490314" data-listing-reading-time-sort="2" data-listing-word-count-sort="221" data-listing-title-sort="SSH configuration for Git repository" data-listing-filename-sort="ssh_keygen_and_config_for_git.ipynb">
-<td>
-<a href="../notes/ssh_keygen_and_config_for_git.html" class="title listing-title">SSH configuration for Git repository</a>
-</td>
-<td>
-<span class="listing-description">How to configure SSH access to Git repository</span>
-</td>
-</tr>
-<tr data-index="3" data-categories="bm90ZXMlMkNqdXB5dGVyJTJDY29uZGE=" data-listing-file-modified-sort="1734466987084" data-listing-reading-time-sort="1" data-listing-word-count-sort="145" data-listing-title-sort="Setup Jupyterlab on conda environments" data-listing-filename-sort="setup_jupyter_on_conda_environments.ipynb">
-<td>
-<a href="../notes/setup_jupyter_on_conda_environments.html" class="title listing-title">Setup Jupyterlab on conda environments</a>
-</td>
-<td>
-<span class="listing-description">My template to setup Jupyterlab and conda…</span>
-</td>
-</tr>
-<tr data-index="4" data-categories="bm90ZXMlMkNqdXB5dGVy" data-listing-file-modified-sort="1734466987084" data-listing-reading-time-sort="1" data-listing-word-count-sort="128" data-listing-title-sort="Show the token of a Jupyter server" data-listing-filename-sort="get_jupyter_server_token.ipynb">
-<td>
-<a href="../notes/get_jupyter_server_token.html" class="title listing-title">Show the token of a Jupyter server</a>
-</td>
-<td>
-<span class="listing-description">How to obtain the token of a running Jupyter…</span>
-</td>
-</tr>
-<tr data-index="5" data-categories="bm90ZXMlMkNqdXB5dGVyJTJDdGVuc29yYm9hcmQ=" data-listing-file-modified-sort="1734727826926" data-listing-reading-time-sort="1" data-listing-word-count-sort="86" data-listing-title-sort="Tensorboard on a remote server" data-listing-filename-sort="tensorboard_on_remote_server.ipynb">
-<td>
-<a href="../notes/tensorboard_on_remote_server.html" class="title listing-title">Tensorboard on a remote server</a>
-</td>
-<td>
-<span class="listing-description">How to run Tensorboard on a remote server and…</span>
-</td>
-</tr>
-<tr data-index="6" data-categories="bm90ZXMlMkNiYXNoJTJDZmluZA==" data-listing-file-modified-sort="1738513563209" data-listing-reading-time-sort="1" data-listing-word-count-sort="112" data-listing-title-sort="Using `find` to search for recently modified files" data-listing-filename-sort="find_recently_modified_files.ipynb">
-<td>
-<a href="../notes/find_recently_modified_files.html" class="title listing-title">Using <code>find</code> to search for recently modified files</a>
-</td>
-<td>
-<span class="listing-description">How to search for recently modified files</span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
