@@ -28,11 +28,60 @@
     "text": "Resources\n\nUseful summary of SSH config file format and options.\nStackoverflow thread on the interaction between /etc/hosts and ~/.ssh/config."
   },
   {
+    "objectID": "notes/pytorch_gpu_memory_in_jupyter.html",
+    "href": "notes/pytorch_gpu_memory_in_jupyter.html",
+    "title": "Pytorch GPU memory management in Jupyter",
+    "section": "",
+    "text": "To clean-up cached memory in Pytorch:\ndel x\nwith torch.no_grad():\n    torch.cuda.empty_cache()\nNote that torch.cuda.empty_cache() simply frees cached memory. For this to be truly effective, we must carefully handle variables and contexts, like we do in the previous example deleting variable x.\nAlso, remember to the context manager when running the network in inference mode, e.g.:\nx, y = next(iter(dl))\nwith torch.no_grad():\n    pred = net(x)\nRunning the code above without the context manager may result in difficulties freeing up the GPU memory.\nTo check the global namespace in a Jupyter environment:\n%who\nwhich will return all variables living in the global namespace.\nA more advanced approach would involve checking the garbage collector for tracked variables and referrers:\nimport gc\nobjs_in_gpu = [obj for obj in gc.get_objects() if isinstance(obj, torch.Tensor) and obj.is_cuda]\nreferrers = gc.get_referrers(objs_in_gpu[0])"
+  },
+  {
+    "objectID": "notes/pytorch_gpu_memory_in_jupyter.html#tldr",
+    "href": "notes/pytorch_gpu_memory_in_jupyter.html#tldr",
+    "title": "Pytorch GPU memory management in Jupyter",
+    "section": "",
+    "text": "To clean-up cached memory in Pytorch:\ndel x\nwith torch.no_grad():\n    torch.cuda.empty_cache()\nNote that torch.cuda.empty_cache() simply frees cached memory. For this to be truly effective, we must carefully handle variables and contexts, like we do in the previous example deleting variable x.\nAlso, remember to the context manager when running the network in inference mode, e.g.:\nx, y = next(iter(dl))\nwith torch.no_grad():\n    pred = net(x)\nRunning the code above without the context manager may result in difficulties freeing up the GPU memory.\nTo check the global namespace in a Jupyter environment:\n%who\nwhich will return all variables living in the global namespace.\nA more advanced approach would involve checking the garbage collector for tracked variables and referrers:\nimport gc\nobjs_in_gpu = [obj for obj in gc.get_objects() if isinstance(obj, torch.Tensor) and obj.is_cuda]\nreferrers = gc.get_referrers(objs_in_gpu[0])"
+  },
+  {
+    "objectID": "notes/pytorch_gpu_memory_in_jupyter.html#breakdown",
+    "href": "notes/pytorch_gpu_memory_in_jupyter.html#breakdown",
+    "title": "Pytorch GPU memory management in Jupyter",
+    "section": "Breakdown",
+    "text": "Breakdown\n\nPython’s garbage collector is the mechanism used in Python to determine when a variable (and the corresponding memory) can be freed. A reference count mechanism is used to keep track of references to memory. Sometimes, reference count increases can go unnoticed and create issues since the garbage collector does not free the memory as expected.\nA common error is storing references to Pytorch-related variables attached to computation graphs (as described here). This will cause the computation graph to stay in memory and eventually trigger OOM errors or slow down processing due to inefficient memory management.\nA key pattern to avoid many of these errors is using context managers, which automatically handle reference counting and ensure that variables declared within the context are freed when the context is exited.\n\nwith torch.cuda.device(0):\n    # Code\n\nFunctions and exception blocks (try-except-finally) also serve this purpose and it is often a good idea to combine them in functions that perform heavy processing tasks which might be interrupted. Interruptions, if not handled properly, may also interfere with the reference counting mechanism. The following is a useful snippet\n\ndef func(params):\n    try:\n        # Heavy processing here\n    except: # Use specific exception if expected\n        torch.cuda.empty_cache() # Ensure cached memory is freed if exception triggers"
+  },
+  {
+    "objectID": "notes/pytorch_gpu_memory_in_jupyter.html#resources",
+    "href": "notes/pytorch_gpu_memory_in_jupyter.html#resources",
+    "title": "Pytorch GPU memory management in Jupyter",
+    "section": "Resources",
+    "text": "Resources\n\nPost in iifx.dev discussing several methods to handle Out-Of-Memory errors associated to Pytorch.\nPost by Neerja Aggarwal describing OOM cases in the context of CUDA, Pytorch and Jupyter notebooks, and tips on avoiding them.\nOfficial Pytorch documentation on memory management when using CUDA.\nPost by Bartosz Mikulski discussing memory management in Jupyter notebooks.\nStackoverflow thread with additional discussions."
+  },
+  {
+    "objectID": "notes/slurm_basic_commands.html",
+    "href": "notes/slurm_basic_commands.html",
+    "title": "SLURM basic commands",
+    "section": "",
+    "text": "Write the following SLURM directives and code in a file, e.g. job script.sh:\n#!/bin/bash\n\n#SBATCH --mail-type=ALL                # Type of events triggering email\n#SBATCH --mail-user=[email_address]    # Email address for notifications\n#SBATCH --job-name=[name_for_job]      # Job name\n#SBATCH --time=50:00:00                # Max. runtime, 50 hours in this case\n#SBATCH --mem=128G                     # Define amout of RAM, 128 gigabytes here\n#SBATCH --partition=[partition_name]   # Partition to use\n#SBATCH --gres=gpu:1                   # Generic resource specification, here a node with 1 GPU\n#SBATCH --constraint=A10               # Additional constraint: only nodes with A10 feature are valid\n#SBATCH --no-requeue                   # Do not requeue job if failed\n\n\n## Bash code to execute\nscript=\"$HOME/script.py\" # A script to be run\ndata_path=\"$HOME/some_data.txt\" # Input data\nout_path=\"$PWD\" # Path for output\n\n## Execute\nsrun /usr/bin/nvidia-smi # E.g. to validate that the node has the required GPU\nsrun python -c 'import torch; print(torch.cuda.is_available())' # To validate that Pytorch is correctly detected\nsrun python $script $data_path $out_path\nNote that lines starting with #SBATCH are SLURM directives that will be interpreted by SLRUM.\nThen, run it with the sbatch SLURM command:\nsbatch script.sh\n\n\n\nThe SLURM command to list running jobs and their status is squeue. In practice there are too many jobs and some filtering must be applied, often user-based. This can be done using standard grep with the username of interest:\nsqueue | grep [username]\nor using the specific options of squeue:\nsqueue --u [username] # or `whoami` instead of [username]\nFor more information go here.\n\n\n\nAfter running a job with sbatch SLURM will output the job ID of the running job. To cancel the job use scancel:\nscancel [jobID]\n\n\n\nDifferent jobs may have different requirements in terms of memory, cores, GPUs… In the job script we have to specify these requirements as generic resources (via --gres) or constraints (via --constraints). To list the available generic resources and features (used to specify constraints) we use sinfo:\nsinfo -o '%25N %5c %10m %40f %G'\nwhere\n\n-o is the option to specify the output format\n'%25N %5c %10m %40f %G' is the format specification:\n\nnumber after % indicates the max. length for that field\n%N to show node names\n%c to show number of cores\n%m to show available RAM memory\n%f to show available features (which can be specified in the --constraints option of a job script)\n%G to show available generic resources (used in the --gres option of a job script)\n\n\nsinfo provides lots of information about the cluster. For more information and options go here."
+  },
+  {
+    "objectID": "notes/slurm_basic_commands.html#tldr",
+    "href": "notes/slurm_basic_commands.html#tldr",
+    "title": "SLURM basic commands",
+    "section": "",
+    "text": "Write the following SLURM directives and code in a file, e.g. job script.sh:\n#!/bin/bash\n\n#SBATCH --mail-type=ALL                # Type of events triggering email\n#SBATCH --mail-user=[email_address]    # Email address for notifications\n#SBATCH --job-name=[name_for_job]      # Job name\n#SBATCH --time=50:00:00                # Max. runtime, 50 hours in this case\n#SBATCH --mem=128G                     # Define amout of RAM, 128 gigabytes here\n#SBATCH --partition=[partition_name]   # Partition to use\n#SBATCH --gres=gpu:1                   # Generic resource specification, here a node with 1 GPU\n#SBATCH --constraint=A10               # Additional constraint: only nodes with A10 feature are valid\n#SBATCH --no-requeue                   # Do not requeue job if failed\n\n\n## Bash code to execute\nscript=\"$HOME/script.py\" # A script to be run\ndata_path=\"$HOME/some_data.txt\" # Input data\nout_path=\"$PWD\" # Path for output\n\n## Execute\nsrun /usr/bin/nvidia-smi # E.g. to validate that the node has the required GPU\nsrun python -c 'import torch; print(torch.cuda.is_available())' # To validate that Pytorch is correctly detected\nsrun python $script $data_path $out_path\nNote that lines starting with #SBATCH are SLURM directives that will be interpreted by SLRUM.\nThen, run it with the sbatch SLURM command:\nsbatch script.sh\n\n\n\nThe SLURM command to list running jobs and their status is squeue. In practice there are too many jobs and some filtering must be applied, often user-based. This can be done using standard grep with the username of interest:\nsqueue | grep [username]\nor using the specific options of squeue:\nsqueue --u [username] # or `whoami` instead of [username]\nFor more information go here.\n\n\n\nAfter running a job with sbatch SLURM will output the job ID of the running job. To cancel the job use scancel:\nscancel [jobID]\n\n\n\nDifferent jobs may have different requirements in terms of memory, cores, GPUs… In the job script we have to specify these requirements as generic resources (via --gres) or constraints (via --constraints). To list the available generic resources and features (used to specify constraints) we use sinfo:\nsinfo -o '%25N %5c %10m %40f %G'\nwhere\n\n-o is the option to specify the output format\n'%25N %5c %10m %40f %G' is the format specification:\n\nnumber after % indicates the max. length for that field\n%N to show node names\n%c to show number of cores\n%m to show available RAM memory\n%f to show available features (which can be specified in the --constraints option of a job script)\n%G to show available generic resources (used in the --gres option of a job script)\n\n\nsinfo provides lots of information about the cluster. For more information and options go here."
+  },
+  {
+    "objectID": "notes/slurm_basic_commands.html#resources",
+    "href": "notes/slurm_basic_commands.html#resources",
+    "title": "SLURM basic commands",
+    "section": "Resources",
+    "text": "Resources\n\nOfficial SLURM documentation"
+  },
+  {
     "objectID": "notes/index.html",
     "href": "notes/index.html",
     "title": "Personal Notes",
     "section": "",
-    "text": "Personal Notes\nThese are some notes, procedures or code snippets I find useful myself and tend to use relatively often.\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nRunning Jupyter from a remote server\n\n\nHow to run Jupyter on a remote server and access…\n\n\n\n\nSSH configuration file\n\n\nHow to configure a remote host in the SSH config…\n\n\n\n\nSSH configuration for Git repository\n\n\nHow to configure SSH access to Git repository\n\n\n\n\nSetup Jupyterlab on conda environments\n\n\nMy template to setup Jupyterlab and conda…\n\n\n\n\nShow the token of a Jupyter server\n\n\nHow to obtain the token of a running Jupyter…\n\n\n\n\nTensorboard on a remote server\n\n\nHow to run Tensorboard on a remote server and…\n\n\n\n\nUsing find to search for recently modified files\n\n\nHow to search for recently modified files\n\n\n\n\n\nNo matching items"
+    "text": "Personal Notes\nThese are some notes, procedures or code snippets I find useful myself and tend to use relatively often.\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\nDisk space and usage in Linux\n\n\nUsing du and df commands to collect disk…\n\n\n\n\nPytorch GPU memory management in Jupyter\n\n\nLessons learned about managing GPU memory when…\n\n\n\n\nRunning Jupyter from a remote server\n\n\nHow to run Jupyter on a remote server and access…\n\n\n\n\nSLURM basic commands\n\n\nSome basic commands to run jobs in SLURM\n\n\n\n\nSSH configuration file\n\n\nHow to configure a remote host in the SSH config…\n\n\n\n\nSSH configuration for Git repository\n\n\nHow to configure SSH access to Git repository\n\n\n\n\nSetup Jupyterlab on conda environments\n\n\nMy template to setup Jupyterlab and conda…\n\n\n\n\nShow the token of a Jupyter server\n\n\nHow to obtain the token of a running Jupyter…\n\n\n\n\nSpecify GPU device\n\n\nHow to specify GPU device\n\n\n\n\nTensorboard on a remote server\n\n\nHow to run Tensorboard on a remote server and…\n\n\n\n\nUsing find to search for recently modified files\n\n\nHow to search for recently modified files\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes/ssh_keygen_and_config_for_git.html",
@@ -210,6 +259,34 @@
     "text": "Resources\n\nStackoverflow\nFound in Hamel’s blog\nSimilar instructions found in Willem’s Fizzy Logic\nA more advanced approach using HTTPS by Davis Busteed"
   },
   {
+    "objectID": "notes/set_cuda_gpu_device.html",
+    "href": "notes/set_cuda_gpu_device.html",
+    "title": "Specify GPU device",
+    "section": "",
+    "text": "A generic solution to specify the GPU device(s) to use is to set the CUDA_VISIBLE_DEVICES environment variable. When running from terminal:\nCUDA_VISIBLE_DEVICES=0,1 [executable] [params]\nWhen running inside a Jupyter notebook, use the following snippet. To avoid potential conflicts, use this before any CUDA/GPU-related modules are imported:\nimport os\nos.environ[\"CUDA_VISIBLE_DEVICES\"] = \"0,1\""
+  },
+  {
+    "objectID": "notes/set_cuda_gpu_device.html#tldr",
+    "href": "notes/set_cuda_gpu_device.html#tldr",
+    "title": "Specify GPU device",
+    "section": "",
+    "text": "A generic solution to specify the GPU device(s) to use is to set the CUDA_VISIBLE_DEVICES environment variable. When running from terminal:\nCUDA_VISIBLE_DEVICES=0,1 [executable] [params]\nWhen running inside a Jupyter notebook, use the following snippet. To avoid potential conflicts, use this before any CUDA/GPU-related modules are imported:\nimport os\nos.environ[\"CUDA_VISIBLE_DEVICES\"] = \"0,1\""
+  },
+  {
+    "objectID": "notes/set_cuda_gpu_device.html#breakdown",
+    "href": "notes/set_cuda_gpu_device.html#breakdown",
+    "title": "Specify GPU device",
+    "section": "Breakdown",
+    "text": "Breakdown\n\nUsing CUDA_VISIBLE_DEVICES will restrict the devices visible to the executed program. Internally, CUDA device IDs will be remmaped, i.e. cuda:0 will be mapped to the first visible device, which could could be the second one if CUDA_VISIBLE_DEVICES=1.\nCUDA_DEVICE_ORDER=PCI_BUS_ID or os.environ[\"CUDA_DEVICE_ORDER\"] = \"PCI_BUS_ID\" ensures that devices are always listed according to their PCI bus ID, avoiding potential non-determinism when listing GPU devices."
+  },
+  {
+    "objectID": "notes/set_cuda_gpu_device.html#resources",
+    "href": "notes/set_cuda_gpu_device.html#resources",
+    "title": "Specify GPU device",
+    "section": "Resources",
+    "text": "Resources\n\nPost in NVIDIA technical blog.\nStackoverflow thread specifically for Jupyter notebooks. Uses the CUDA_DEVICE_ORDER environment variable.\nPytorch documentation on torch.cuda.set_device() method (which also indicates using CUDA_VISIBLE_DEVICES is usually a better option)."
+  },
+  {
     "objectID": "notes/find_recently_modified_files.html",
     "href": "notes/find_recently_modified_files.html",
     "title": "Using find to search for recently modified files",
@@ -236,5 +313,33 @@
     "title": "Using find to search for recently modified files",
     "section": "Resources",
     "text": "Resources\n\nOfficial find man-page documentation.\nStackoverflow thread with an example."
+  },
+  {
+    "objectID": "notes/linux_disk_space_and_usage.html",
+    "href": "notes/linux_disk_space_and_usage.html",
+    "title": "Disk space and usage in Linux",
+    "section": "",
+    "text": "To check the disk space use df (for *disk free`):\n$ df -h\nThis will list mounted drives and list the directory where they are mounted, together with the total, used and available space in human readable form.\nTo check how much space a given directory and its subdirectories or files take, use du (for disk usage):\ndu [path_to_directory] -h -d [depth]\nFor example:\n$ du . -h -d 2 -a\n\n8,0K    ./posts\n52K     ./notes\n4,0K    ./README.md\n8,0K    ./publications.qmd\n142M    .\nThis will list all (-a) directories and files in the current directory (.), and one level below (-d 2) together with the amount of disk space they take in human readable form (-h)."
+  },
+  {
+    "objectID": "notes/linux_disk_space_and_usage.html#tldr",
+    "href": "notes/linux_disk_space_and_usage.html#tldr",
+    "title": "Disk space and usage in Linux",
+    "section": "",
+    "text": "To check the disk space use df (for *disk free`):\n$ df -h\nThis will list mounted drives and list the directory where they are mounted, together with the total, used and available space in human readable form.\nTo check how much space a given directory and its subdirectories or files take, use du (for disk usage):\ndu [path_to_directory] -h -d [depth]\nFor example:\n$ du . -h -d 2 -a\n\n8,0K    ./posts\n52K     ./notes\n4,0K    ./README.md\n8,0K    ./publications.qmd\n142M    .\nThis will list all (-a) directories and files in the current directory (.), and one level below (-d 2) together with the amount of disk space they take in human readable form (-h)."
+  },
+  {
+    "objectID": "notes/linux_disk_space_and_usage.html#breakdown",
+    "href": "notes/linux_disk_space_and_usage.html#breakdown",
+    "title": "Disk space and usage in Linux",
+    "section": "Breakdown",
+    "text": "Breakdown\n\nAs usual with Linux commands, the built-in help is the best source of truth: du --help or df --help to obtain all available options.\nIn both commands -h is short for human-readable, which for me is a must unless the goal is to pipe the output to some other tool.\nIn the case of du another quite useful options is --time which adds the date and time the file or directory was last modified.\n\nFor example:\n$ du . -h -d 1 -a --time\n\n8,0K    2024-12-26 13:55    ./posts\n52K     2024-12-27 12:11    ./notes\n4,0K    2024-12-23 12:52    ./README.md\n8,0K    2024-12-23 12:52    ./publications.qmd\n142M    2024-12-27 12:11    ."
+  },
+  {
+    "objectID": "notes/linux_disk_space_and_usage.html#resources",
+    "href": "notes/linux_disk_space_and_usage.html#resources",
+    "title": "Disk space and usage in Linux",
+    "section": "Resources",
+    "text": "Resources\n\ndu command explained in 101 Linux commands e-book\ndf command explained in 101 Linux commands e-book\nPost about du in redhat.com.\nPost about df in redhat.com."
   }
 ]

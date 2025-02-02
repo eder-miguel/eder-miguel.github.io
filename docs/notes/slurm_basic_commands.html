@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Some basic commands to run jobs in SLURM">
 
-<title>index – My blog</title>
+<title>SLURM basic commands – My blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,65 +101,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -157,7 +132,7 @@ window.Quarto = {
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../notes/index.html" aria-current="page"> 
+    <a class="nav-link" href="../notes/index.html"> 
 <span class="menu-text">Notes</span></a>
   </li>  
 </ul>
@@ -176,147 +151,117 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#personal-notes" id="toc-personal-notes" class="nav-link active" data-scroll-target="#personal-notes">Personal Notes</a></li>
+  <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TL;DR</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">SLURM basic commands</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">notes</div>
+    <div class="quarto-category">slurm</div>
+    <div class="quarto-category">HPC</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Some basic commands to run jobs in SLURM
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="personal-notes" class="level1">
-<h1>Personal Notes</h1>
-<p>These are some notes, procedures or code snippets I find useful myself and tend to use relatively often.</p>
+</header>
 
+
+<section id="tldr" class="level2">
+<h2 class="anchored" data-anchor-id="tldr">TL;DR</h2>
+<section id="basic-slurm-job-script" class="level3">
+<h3 class="anchored" data-anchor-id="basic-slurm-job-script">Basic SLURM job script</h3>
+<p>Write the following SLURM directives and code in a file, e.g.&nbsp;job <code>script.sh</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=ALL                # Type of events triggering email</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-user=[email_address]    # Email address for notifications</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=[name_for_job]      # Job name</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=50:00:00                # Max. runtime, 50 hours in this case</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=128G                     # Define amout of RAM, 128 gigabytes here</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=[partition_name]   # Partition to use</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --gres=gpu:1                   # Generic resource specification, here a node with 1 GPU</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --constraint=A10               # Additional constraint: only nodes with A10 feature are valid</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --no-requeue                   # Do not requeue job if failed</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">## Bash code to execute</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="va">script</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/script.py"</span> <span class="co"># A script to be run</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="va">data_path</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/some_data.txt"</span> <span class="co"># Input data</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="va">out_path</span><span class="op">=</span><span class="st">"</span><span class="va">$PWD</span><span class="st">"</span> <span class="co"># Path for output</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">## Execute</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> /usr/bin/nvidia-smi <span class="co"># E.g. to validate that the node has the required GPU</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> python <span class="at">-c</span> <span class="st">'import torch; print(torch.cuda.is_available())'</span> <span class="co"># To validate that Pytorch is correctly detected</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> python <span class="va">$script</span> <span class="va">$data_path</span> <span class="va">$out_path</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that lines starting with <code>#SBATCH</code> are SLURM directives that will be interpreted by SLRUM.</p>
+<p>Then, run it with the <code>sbatch</code> SLURM command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> script.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="check-status-of-running-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="check-status-of-running-jobs">Check status of running jobs</h3>
+<p>The SLURM command to list running jobs and their status is <code>squeue</code>. In practice there are too many jobs and some filtering must be applied, often user-based. This can be done using standard <code>grep</code> with the username of interest:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="pp">[</span><span class="ss">username</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or using the specific options of <code>squeue</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">--u</span> <span class="pp">[</span><span class="ss">username</span><span class="pp">]</span> <span class="co"># or `whoami` instead of [username]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For more information go <a href="https://slurm.schedmd.com/squeue.html">here</a>.</p>
+</section>
+<section id="cancel-a-running-job" class="level3">
+<h3 class="anchored" data-anchor-id="cancel-a-running-job">Cancel a running job</h3>
+<p>After running a job with <code>sbatch</code> SLURM will output the job ID of the running job. To cancel the job use <code>scancel</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="pp">[</span><span class="ss">jobID</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="list-available-nodes-and-features" class="level3">
+<h3 class="anchored" data-anchor-id="list-available-nodes-and-features">List available nodes and features</h3>
+<p>Different jobs may have different requirements in terms of memory, cores, GPUs… In the job script we have to specify these requirements as generic resources (via <code>--gres</code>) or constraints (via <code>--constraints</code>). To list the available generic resources and features (used to specify constraints) we use <code>sinfo</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinfo</span> <span class="at">-o</span> <span class="st">'%25N %5c %10m %40f %G'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>where</p>
+<ul>
+<li><code>-o</code> is the option to specify the output format</li>
+<li><code>'%25N %5c %10m %40f %G'</code> is the format specification:
+<ul>
+<li>number after <code>%</code> indicates the max. length for that field</li>
+<li><code>%N</code> to show node names</li>
+<li><code>%c</code> to show number of cores</li>
+<li><code>%m</code> to show available RAM memory</li>
+<li><code>%f</code> to show available features (which can be specified in the <code>--constraints</code> option of a job script)</li>
+<li><code>%G</code> to show available generic resources (used in the <code>--gres</code> option of a job script)</li>
+</ul></li>
+</ul>
+<p><code>sinfo</code> provides lots of information about the cluster. For more information and options go <a href="https://slurm.schedmd.com/sinfo.html">here</a>.</p>
+</section>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://slurm.schedmd.com/documentation.html">Official SLURM documentation</a></li>
+</ul>
 
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-Description
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="bm90ZXMlMkNMaW51eA==" data-listing-file-modified-sort="1738513664999" data-listing-reading-time-sort="2" data-listing-word-count-sort="221" data-listing-title-sort="Disk space and usage in Linux" data-listing-filename-sort="linux_disk_space_and_usage.ipynb">
-<td>
-<a href="../notes/linux_disk_space_and_usage.html" class="title listing-title">Disk space and usage in Linux</a>
-</td>
-<td>
-<span class="listing-description">Using <code>du</code> and <code>df</code> commands to collect disk…</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="bm90ZXMlMkNQeXRvcmNoJTJDSnVweXRlcg==" data-listing-file-modified-sort="1738513664999" data-listing-reading-time-sort="2" data-listing-word-count-sort="395" data-listing-title-sort="Pytorch GPU memory management in Jupyter" data-listing-filename-sort="pytorch_gpu_memory_in_jupyter.ipynb">
-<td>
-<a href="../notes/pytorch_gpu_memory_in_jupyter.html" class="title listing-title">Pytorch GPU memory management in Jupyter</a>
-</td>
-<td>
-<span class="listing-description">Lessons learned about managing GPU memory when…</span>
-</td>
-</tr>
-<tr data-index="2" data-categories="bm90ZXMlMkNqdXB5dGVy" data-listing-file-modified-sort="1734466987084" data-listing-reading-time-sort="2" data-listing-word-count-sort="263" data-listing-title-sort="Running Jupyter from a remote server" data-listing-filename-sort="running_jupyter_on_remote_server.ipynb">
-<td>
-<a href="../notes/running_jupyter_on_remote_server.html" class="title listing-title">Running Jupyter from a remote server</a>
-</td>
-<td>
-<span class="listing-description">How to run Jupyter on a remote server and access…</span>
-</td>
-</tr>
-<tr data-index="3" data-categories="bm90ZXMlMkNzbHVybSUyQ0hQQw==" data-listing-file-modified-sort="1738513664999" data-listing-reading-time-sort="3" data-listing-word-count-sort="519" data-listing-title-sort="SLURM basic commands" data-listing-filename-sort="slurm_basic_commands.ipynb">
-<td>
-<a href="../notes/slurm_basic_commands.html" class="title listing-title">SLURM basic commands</a>
-</td>
-<td>
-<span class="listing-description">Some basic commands to run jobs in SLURM</span>
-</td>
-</tr>
-<tr data-index="4" data-categories="bm90ZXMlMkNzc2g=" data-listing-file-modified-sort="1734975511804" data-listing-reading-time-sort="2" data-listing-word-count-sort="228" data-listing-title-sort="SSH configuration file" data-listing-filename-sort="ssh_config_file.ipynb">
-<td>
-<a href="../notes/ssh_config_file.html" class="title listing-title">SSH configuration file</a>
-</td>
-<td>
-<span class="listing-description">How to configure a remote host in the SSH config…</span>
-</td>
-</tr>
-<tr data-index="5" data-categories="bm90ZXMlMkNnaXQlMkNzc2g=" data-listing-file-modified-sort="1734973490314" data-listing-reading-time-sort="2" data-listing-word-count-sort="221" data-listing-title-sort="SSH configuration for Git repository" data-listing-filename-sort="ssh_keygen_and_config_for_git.ipynb">
-<td>
-<a href="../notes/ssh_keygen_and_config_for_git.html" class="title listing-title">SSH configuration for Git repository</a>
-</td>
-<td>
-<span class="listing-description">How to configure SSH access to Git repository</span>
-</td>
-</tr>
-<tr data-index="6" data-categories="bm90ZXMlMkNqdXB5dGVyJTJDY29uZGE=" data-listing-file-modified-sort="1734466987084" data-listing-reading-time-sort="1" data-listing-word-count-sort="145" data-listing-title-sort="Setup Jupyterlab on conda environments" data-listing-filename-sort="setup_jupyter_on_conda_environments.ipynb">
-<td>
-<a href="../notes/setup_jupyter_on_conda_environments.html" class="title listing-title">Setup Jupyterlab on conda environments</a>
-</td>
-<td>
-<span class="listing-description">My template to setup Jupyterlab and conda…</span>
-</td>
-</tr>
-<tr data-index="7" data-categories="bm90ZXMlMkNqdXB5dGVy" data-listing-file-modified-sort="1734466987084" data-listing-reading-time-sort="1" data-listing-word-count-sort="128" data-listing-title-sort="Show the token of a Jupyter server" data-listing-filename-sort="get_jupyter_server_token.ipynb">
-<td>
-<a href="../notes/get_jupyter_server_token.html" class="title listing-title">Show the token of a Jupyter server</a>
-</td>
-<td>
-<span class="listing-description">How to obtain the token of a running Jupyter…</span>
-</td>
-</tr>
-<tr data-index="8" data-categories="bm90ZXMlMkNQeXRvcmNoJTJDSnVweXRlciUyQ0NVREE=" data-listing-file-modified-sort="1738513664999" data-listing-reading-time-sort="1" data-listing-word-count-sort="141" data-listing-title-sort="Specify GPU device" data-listing-filename-sort="set_cuda_gpu_device.ipynb">
-<td>
-<a href="../notes/set_cuda_gpu_device.html" class="title listing-title">Specify GPU device</a>
-</td>
-<td>
-<span class="listing-description">How to specify GPU device</span>
-</td>
-</tr>
-<tr data-index="9" data-categories="bm90ZXMlMkNqdXB5dGVyJTJDdGVuc29yYm9hcmQ=" data-listing-file-modified-sort="1734727826926" data-listing-reading-time-sort="1" data-listing-word-count-sort="86" data-listing-title-sort="Tensorboard on a remote server" data-listing-filename-sort="tensorboard_on_remote_server.ipynb">
-<td>
-<a href="../notes/tensorboard_on_remote_server.html" class="title listing-title">Tensorboard on a remote server</a>
-</td>
-<td>
-<span class="listing-description">How to run Tensorboard on a remote server and…</span>
-</td>
-</tr>
-<tr data-index="10" data-categories="bm90ZXMlMkNiYXNoJTJDZmluZA==" data-listing-file-modified-sort="1738513563209" data-listing-reading-time-sort="1" data-listing-word-count-sort="112" data-listing-title-sort="Using `find` to search for recently modified files" data-listing-filename-sort="find_recently_modified_files.ipynb">
-<td>
-<a href="../notes/find_recently_modified_files.html" class="title listing-title">Using <code>find</code> to search for recently modified files</a>
-</td>
-<td>
-<span class="listing-description">How to search for recently modified files</span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
