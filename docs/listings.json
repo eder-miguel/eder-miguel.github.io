@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/posts/index.html",
+    "items": []
+  },
+  {
     "listing": "/notes/index.html",
     "items": [
       "/notes/linux_disk_space_and_usage.html",
@@ -12,11 +16,8 @@
       "/notes/get_jupyter_server_token.html",
       "/notes/set_cuda_gpu_device.html",
       "/notes/tensorboard_on_remote_server.html",
-      "/notes/find_recently_modified_files.html"
+      "/notes/find_recently_modified_files.html",
+      "/notes/voila_for_jupyter_notebooks.html"
     ]
-  },
-  {
-    "listing": "/posts/index.html",
-    "items": []
   }
 ]
