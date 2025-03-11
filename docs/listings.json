@@ -1,12 +1,9 @@
 [
   {
-    "listing": "/posts/index.html",
-    "items": []
-  },
-  {
     "listing": "/notes/index.html",
     "items": [
       "/notes/linux_disk_space_and_usage.html",
+      "/notes/file_based_conda_environments.html",
       "/notes/pytorch_gpu_memory_in_jupyter.html",
       "/notes/running_jupyter_on_remote_server.html",
       "/notes/slurm_basic_commands.html",
@@ -19,5 +16,9 @@
       "/notes/find_recently_modified_files.html",
       "/notes/voila_for_jupyter_notebooks.html"
     ]
+  },
+  {
+    "listing": "/posts/index.html",
+    "items": []
   }
 ]
