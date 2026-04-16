@@ -21,6 +21,10 @@ format:
     css: styles.css
     toc: true
     toc-depth: 2
+    include-after-body:
+      text: |
+        <script data-goatcounter="https://eder-miguel-blog.goatcounter.com/count"
+                async src="//gc.zgo.at/count.js"></script>
 
 metadata-files:
   - _metadata.yml
